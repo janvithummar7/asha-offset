@@ -14,7 +14,14 @@
   --color-ink: #191817;
   --color-coffee: #3a2921;
   --color-burgundy: #6b302d;
+  /* Decorative brass. Only 2.92:1 on paper, so it is used for rules,
+     ornaments and large display type on dark — never for small text
+     on a light ground. The two variants below cover that. */
   --color-brass: #a98752;
+  /* 5.34:1 on paper, 4.68:1 on cream — small text on a light ground. */
+  --color-brass-deep: #765e39;
+  /* 8.01:1 on ink, 6.25:1 on coffee — small text on a dark ground. */
+  --color-brass-light: #c3ab86;
 
   /* Tints used for rules, washes and hairlines --------------------- */
   --color-ink-80: rgb(25 24 23 / 0.8);
@@ -91,14 +98,28 @@
     color: var(--color-paper);
   }
 
+  /* Focus indicator: a thick burgundy rule with a paper-coloured gap, so
+     it reads against both the paper ground and a photograph. Never
+     removed — only replaced with something more visible. */
   :focus-visible {
-    outline: 2px solid var(--color-burgundy);
-    outline-offset: 3px;
+    outline: 3px solid var(--color-burgundy);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-paper);
   }
 
-  /* Dark sections flip the focus ring so it stays visible. */
-  .on-ink :focus-visible {
-    outline-color: var(--color-brass);
+  /* Dark sections flip the ring so it keeps its contrast. */
+  .on-ink :focus-visible,
+  .bg-ink :focus-visible {
+    outline-color: var(--color-brass-light);
+    box-shadow: 0 0 0 2px var(--color-ink);
+  }
+
+  /* Windows high-contrast mode draws its own ring; let it through. */
+  @media (forced-colors: active) {
+    :focus-visible {
+      outline: 3px solid CanvasText;
+      box-shadow: none;
+    }
   }
 }
 
@@ -234,11 +255,13 @@
 /* ================================================================== */
 
 @layer components {
-  /* Small uppercase technical label — "01 / ABOUT". */
+  /* Small uppercase technical label — "01 / ABOUT".
+     Set at 12px rather than 11px: wide tracking costs legibility, so the
+     catalogue look is kept but the label stays comfortably readable. */
   .eyebrow {
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.22em;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 500;
   }

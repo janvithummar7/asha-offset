@@ -78,7 +78,7 @@ export function Credentials({ showLabel = true }: { showLabel?: boolean }) {
 
                 {/* Document mark ---------------------------------- */}
                 <div className="flex items-start justify-between">
-                  <span className="eyebrow text-ink/30">{cert.index}</span>
+                  <span className="eyebrow text-ink/65">{cert.index}</span>
                   <RegistrationMark size={20} className="text-brass/70" />
                 </div>
 
@@ -109,7 +109,7 @@ export function Credentials({ showLabel = true }: { showLabel?: boolean }) {
                 <h3 className="mt-7 font-serif text-[1.25rem] leading-snug text-coffee">
                   {cert.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink/60">
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink/65">
                   {cert.description}
                 </p>
 
@@ -127,7 +127,7 @@ export function Credentials({ showLabel = true }: { showLabel?: boolean }) {
                       <span aria-hidden="true">→</span>
                     </button>
                   ) : (
-                    <p className="eyebrow text-ink/35">Available on request</p>
+                    <p className="eyebrow text-ink/65">Available on request</p>
                   )}
                 </div>
               </article>
@@ -165,7 +165,7 @@ export function Credentials({ showLabel = true }: { showLabel?: boolean }) {
               alt={active.label}
               className="h-auto w-full"
             />
-            <figcaption className="eyebrow mt-4 text-ink/50">
+            <figcaption className="eyebrow mt-4 text-ink/65">
               {active.label}
             </figcaption>
           </figure>

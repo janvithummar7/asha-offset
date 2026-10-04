@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { company, navLinks } from "@/lib/content";
+import { company, footerLinks, navLinks } from "@/lib/content";
 import { ColourBar, RegistrationMark } from "./print";
 
 export function Footer() {
@@ -30,7 +30,7 @@ export function Footer() {
             <p className="mt-4 font-serif text-xl italic text-paper/75">
               {company.tagline}
             </p>
-            <p className="eyebrow mt-5 text-paper/45">
+            <p className="eyebrow mt-5 text-paper/60">
               Printing Excellence Since {company.since}.
             </p>
 
@@ -55,18 +55,20 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/certifications"
-                  className="group inline-flex items-center gap-2 text-paper/70 transition-colors hover:text-paper"
-                >
-                  <span
-                    className="h-px w-0 bg-brass transition-all duration-300 group-hover:w-4"
-                    aria-hidden="true"
-                  />
-                  Certifications
-                </Link>
-              </li>
+              {footerLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="group inline-flex items-center gap-2 text-paper/70 transition-colors hover:text-paper"
+                  >
+                    <span
+                      className="h-px w-0 bg-brass transition-all duration-300 group-hover:w-4"
+                      aria-hidden="true"
+                    />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
@@ -99,10 +101,10 @@ export function Footer() {
 
         {/* Colophon ------------------------------------------------- */}
         <div className="mt-16 flex flex-col gap-4 border-t border-paper/15 pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="eyebrow text-paper/40">
+          <p className="eyebrow text-paper/60">
             © {year} {company.name}. All Rights Reserved.
           </p>
-          <p className="eyebrow text-paper/30">
+          <p className="eyebrow text-paper/60">
             {company.city}, {company.state} · EST. {company.since}
           </p>
         </div>

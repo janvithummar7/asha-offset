@@ -37,7 +37,7 @@ export function Manufacturing({ showLabel = true }: { showLabel?: boolean }) {
         {/* Press photograph ---------------------------------------- */}
         <Reveal variant="image" className="order-2 lg:order-1">
           <figure className="relative border border-paper/20 p-3">
-            <CropMarks inset="-0.4rem" className="text-paper/30" />
+            <CropMarks inset="-0.4rem" className="text-paper/60" />
             <div className="relative aspect-4/3 overflow-hidden">
               <Image
                 src="/images/press-floor.jpg"
@@ -57,7 +57,7 @@ export function Manufacturing({ showLabel = true }: { showLabel?: boolean }) {
                 aria-hidden="true"
               />
             </div>
-            <figcaption className="eyebrow mt-3 flex items-center justify-between text-paper/45">
+            <figcaption className="eyebrow mt-3 flex items-center justify-between text-paper/60">
               <span>1,800 Sq. Ft. Production Floor</span>
               <ColourBar className="h-1.5 w-16" />
             </figcaption>
@@ -85,7 +85,7 @@ export function Manufacturing({ showLabel = true }: { showLabel?: boolean }) {
             {FIGURES.map((figure, i) => (
               <Reveal key={figure.index} delay={200 + i * 120}>
                 <div className="rule-tick grid gap-3 pt-6 sm:grid-cols-[auto_1fr] sm:gap-7">
-                  <p className="eyebrow pt-2 text-paper/30">{figure.index}</p>
+                  <p className="eyebrow pt-2 text-paper/60">{figure.index}</p>
                   <div>
                     <p className="font-serif text-[clamp(1.75rem,3.5vw,2.75rem)] leading-none text-paper">
                       {figure.value}

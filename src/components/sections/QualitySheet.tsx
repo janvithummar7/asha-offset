@@ -33,7 +33,7 @@ export function QualitySheet({ showLabel = true }: { showLabel?: boolean }) {
                 <p className="eyebrow text-coffee">
                   Production Inspection Record
                 </p>
-                <p className="eyebrow mt-1 text-ink/40">
+                <p className="eyebrow mt-1 text-ink/65">
                   Form QC / 04 — Asha Offset
                 </p>
               </div>
@@ -86,10 +86,10 @@ export function QualitySheet({ showLabel = true }: { showLabel?: boolean }) {
 
           {/* Sign-off --------------------------------------------- */}
           <div className="flex flex-wrap items-end justify-between gap-6 border-t border-ink/20 bg-cream px-6 py-6 sm:px-9">
-            <p className="eyebrow text-ink/40">
+            <p className="eyebrow text-ink/65">
               Checked before dispatch — every order
             </p>
-            <p className="eyebrow text-ink/30">Asha Offset · Gondal</p>
+            <p className="eyebrow text-ink/65">Asha Offset · Gondal</p>
           </div>
         </div>
       </Reveal>

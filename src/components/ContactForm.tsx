@@ -35,7 +35,7 @@ const EMPTY: Fields = {
 };
 
 const FIELD_CLASS =
-  "w-full border border-ink/20 bg-paper px-4 py-3.5 text-ink transition-colors duration-300 placeholder:text-ink/35 focus:border-burgundy focus:outline-none";
+  "w-full border border-ink/20 bg-paper px-4 py-3.5 text-ink transition-colors duration-300 placeholder:text-ink/65 focus:border-burgundy focus:outline-none";
 
 export function ContactForm() {
   const [values, setValues] = useState<Fields>(EMPTY);
@@ -106,7 +106,7 @@ export function ContactForm() {
     return (
       <div className="relative border border-ink/20 bg-cream p-8 sm:p-10">
         <CropMarks inset="0.6rem" />
-        <p className="eyebrow text-brass">Enquiry Composed</p>
+        <p className="eyebrow text-brass-deep">Enquiry Composed</p>
         <h3 className="mt-5 font-serif text-2xl text-coffee sm:text-3xl">
           Your mail client should now be open.
         </h3>
@@ -149,7 +149,7 @@ export function ContactForm() {
     >
       <CropMarks inset="0.6rem" />
 
-      <p className="eyebrow text-brass">Enquiry Form</p>
+      <p className="eyebrow text-brass-deep">Enquiry Form</p>
 
       <div className="mt-7 grid gap-5 sm:grid-cols-2">
         <Field
@@ -192,7 +192,7 @@ export function ContactForm() {
 
       {/* Requirement ------------------------------------------------ */}
       <div className="mt-5">
-        <label htmlFor="need" className="eyebrow block text-ink/55">
+        <label htmlFor="need" className="eyebrow block text-ink/65">
           What do you need printed?
         </label>
         <select
@@ -217,7 +217,7 @@ export function ContactForm() {
 
       {/* Message ---------------------------------------------------- */}
       <div className="mt-5">
-        <label htmlFor="message" className="eyebrow block text-ink/55">
+        <label htmlFor="message" className="eyebrow block text-ink/65">
           Message <span className="text-burgundy">*</span>
         </label>
         <textarea
@@ -256,7 +256,7 @@ export function ContactForm() {
         </span>
       </button>
 
-      <p className="eyebrow mt-5 text-ink/35">
+      <p className="eyebrow mt-5 text-ink/65">
         Opens in your mail app — nothing is stored on this site.
       </p>
     </form>
@@ -289,7 +289,7 @@ function Field({
 >) {
   return (
     <div>
-      <label htmlFor={id} className="eyebrow block text-ink/55">
+      <label htmlFor={id} className="eyebrow block text-ink/65">
         {label} {required && <span className="text-burgundy">*</span>}
       </label>
       <input

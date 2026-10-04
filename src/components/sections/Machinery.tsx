@@ -4,10 +4,11 @@ import { Reveal } from "../Reveal";
 import { Section, SectionHead } from "../Section";
 import { ColourBar, CropMarks, InkStamp } from "../print";
 
-export function Machinery() {
+export function Machinery({ showLabel = true }: { showLabel?: boolean }) {
   return (
     <Section id="machinery" tone="stock">
       <SectionHead
+        showLabel={showLabel}
         index="05"
         label="Machinery"
         title={
@@ -31,7 +32,7 @@ export function Machinery() {
 
           {/* Copy */}
           <div className="relative order-2 lg:order-1">
-            <p className="eyebrow text-brass">Featured — Plate 01</p>
+            <p className="eyebrow text-brass-deep">Featured — Plate 01</p>
             <h3 className="mt-5 font-serif text-[clamp(1.75rem,3.2vw,2.5rem)] leading-tight text-coffee">
               Heidelberg Four Colour Printing Machine
             </h3>
@@ -42,12 +43,12 @@ export function Machinery() {
 
             <div className="mt-8 flex flex-wrap items-center gap-6">
               <div>
-                <p className="eyebrow text-ink/40">Origin</p>
+                <p className="eyebrow text-ink/65">Origin</p>
                 <p className="mt-1.5 font-serif text-xl text-coffee">Germany</p>
               </div>
               <div className="h-10 w-px bg-ink/15" aria-hidden="true" />
               <div>
-                <p className="eyebrow text-ink/40">Process</p>
+                <p className="eyebrow text-ink/65">Process</p>
                 <p className="mt-1.5 font-serif text-xl text-coffee">
                   CMYK Offset
                 </p>
@@ -75,7 +76,7 @@ export function Machinery() {
               <InkStamp
                 lines={["Four Colour", "Offset Press"]}
                 rotate={6}
-                className="scale-90 border-brass/60 text-brass sm:scale-100"
+                className="scale-90 border-brass/60 text-brass-deep sm:scale-100"
               />
             </div>
           </Reveal>
@@ -84,14 +85,14 @@ export function Machinery() {
 
       {/* Equipment register ----------------------------------------- */}
       <Reveal delay={100}>
-        <h3 className="eyebrow mt-20 text-ink/45">Equipment Register</h3>
+        <h3 className="eyebrow mt-20 text-ink/65">Equipment Register</h3>
       </Reveal>
 
       <div className="mt-6 border-t border-ink/15">
         {machines.map((machine, i) => (
           <Reveal key={machine.index} delay={i * 80}>
             <article className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 border-b border-ink/12 py-6 transition-colors duration-400 hover:bg-cream sm:gap-8 sm:py-7">
-              <span className="eyebrow text-ink/30 transition-colors group-hover:text-burgundy">
+              <span className="eyebrow text-ink/65 transition-colors group-hover:text-burgundy">
                 {machine.index}
               </span>
 
@@ -99,11 +100,11 @@ export function Machinery() {
                 <h4 className="font-serif text-[1.25rem] leading-snug text-coffee sm:text-[1.5rem]">
                   {machine.name}
                 </h4>
-                <p className="mt-1.5 text-sm text-ink/55">{machine.note}</p>
+                <p className="mt-1.5 text-[0.9375rem] text-ink/65">{machine.note}</p>
               </div>
 
               <span className="shrink-0 text-right">
-                <span className="eyebrow block text-ink/35">Qty.</span>
+                <span className="eyebrow block text-ink/65">Qty.</span>
                 <span className="mt-0.5 block font-serif text-2xl text-burgundy sm:text-3xl">
                   {machine.quantity}
                 </span>

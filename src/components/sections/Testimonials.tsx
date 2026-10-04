@@ -63,7 +63,7 @@ export function Testimonials() {
                     <p className="font-serif text-lg text-coffee">
                       {item.name}
                     </p>
-                    <p className="eyebrow mt-1.5 text-ink/45">
+                    <p className="eyebrow mt-1.5 text-ink/65">
                       {item.role} — {item.company}
                     </p>
                   </figcaption>
@@ -75,12 +75,12 @@ export function Testimonials() {
               <Reveal key={i} delay={i * 110}>
                 <figure className="relative flex h-full flex-col border border-dashed border-ink/25 bg-paper/50 p-8">
                   <RegistrationMark size={20} className="text-brass/50" />
-                  <blockquote className="mt-6 font-serif text-xl italic leading-snug text-ink/35">
+                  <blockquote className="mt-6 font-serif text-xl italic leading-snug text-ink/65">
                     &ldquo;Your feedback will appear here.&rdquo;
                   </blockquote>
                   <figcaption className="mt-auto border-t border-ink/12 pt-5">
-                    <p className="eyebrow text-ink/35">Client Testimonial</p>
-                    <p className="eyebrow mt-1.5 text-ink/25">
+                    <p className="eyebrow text-ink/65">Client Testimonial</p>
+                    <p className="eyebrow mt-1.5 text-ink/65">
                       Slot {String(i + 1).padStart(2, "0")} — Reserved
                     </p>
                   </figcaption>

@@ -54,7 +54,7 @@ export function CropMarks({
 }) {
   const arm = "1.15rem";
   const common =
-    "pointer-events-none absolute inset-0 text-ink/30 [&>span]:absolute [&>span]:bg-current";
+    "pointer-events-none absolute inset-0 text-ink/65 [&>span]:absolute [&>span]:bg-current";
 
   return (
     <span className={`${common} ${className}`} aria-hidden="true">
@@ -162,7 +162,7 @@ export function SectionLabel({
   className?: string;
   tone?: "ink" | "paper";
 }) {
-  const muted = tone === "ink" ? "text-ink/40" : "text-paper/40";
+  const muted = tone === "ink" ? "text-ink/65" : "text-paper/60";
   const rule = tone === "ink" ? "bg-ink/20" : "bg-paper/25";
   const strong = tone === "ink" ? "text-burgundy" : "text-brass";
 
@@ -187,7 +187,7 @@ export function Folio({
   className?: string;
 }) {
   return (
-    <span className={`eyebrow text-ink/30 ${className}`} aria-hidden="true">
+    <span className={`eyebrow text-ink/65 ${className}`} aria-hidden="true">
       — {value} —
     </span>
   );

@@ -48,12 +48,12 @@ export function ProductShowcase({
             <Reveal>
               <div className="rule-tick flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 pt-6">
                 <h3 className="font-serif text-[clamp(1.5rem,2.6vw,2.125rem)] text-coffee">
-                  <span className="eyebrow mr-4 align-middle text-ink/30">
+                  <span className="eyebrow mr-4 align-middle text-ink/65">
                     {group.index}
                   </span>
                   {group.title}
                 </h3>
-                <p className="text-sm text-ink/55">{group.blurb}</p>
+                <p className="text-[0.9375rem] text-ink/65">{group.blurb}</p>
               </div>
             </Reveal>
 
@@ -73,7 +73,7 @@ export function ProductShowcase({
                         style={{ "--dot": "6px" } as React.CSSProperties}
                         aria-hidden="true"
                       />
-                      <span className="eyebrow absolute left-4 top-4 bg-paper/85 px-2.5 py-1 text-ink/55 backdrop-blur-sm">
+                      <span className="eyebrow absolute left-4 top-4 bg-paper/85 px-2.5 py-1 text-ink/65 backdrop-blur-sm">
                         {group.index}.{String(i + 1).padStart(2, "0")}
                       </span>
                     </div>
@@ -88,7 +88,7 @@ export function ProductShowcase({
                         className="mt-4 h-px w-10 bg-brass transition-all duration-500 group-hover:w-20"
                         aria-hidden="true"
                       />
-                      <p className="mt-4 text-[0.9375rem] leading-relaxed text-ink/65">
+                      <p className="mt-4 text-base leading-relaxed text-ink/65">
                         {item.description}
                       </p>
                     </div>

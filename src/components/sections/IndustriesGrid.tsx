@@ -81,7 +81,7 @@ export function IndustriesGrid({ showLabel = true }: { showLabel?: boolean }) {
         {industries.map((industry, i) => (
           <Reveal key={industry.name} delay={i * 110}>
             <article className="group relative h-full overflow-hidden border border-paper/20 p-8 transition-[transform,background-color,border-color] duration-500 hover:-translate-y-1 hover:border-paper/40 hover:bg-paper/5 sm:p-10">
-              <CropMarks inset="0.7rem" className="text-paper/25" />
+              <CropMarks inset="0.7rem" className="text-paper/60" />
 
               {/* Brass wash rising on hover. */}
               <div
@@ -94,7 +94,7 @@ export function IndustriesGrid({ showLabel = true }: { showLabel?: boolean }) {
                   <span className="text-brass transition-transform duration-500 group-hover:-translate-y-1">
                     <SectorMark name={industry.name} />
                   </span>
-                  <span className="eyebrow text-paper/25">
+                  <span className="eyebrow text-paper/60">
                     {industry.index}
                   </span>
                 </div>

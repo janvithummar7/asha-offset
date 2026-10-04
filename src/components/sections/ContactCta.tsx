@@ -24,7 +24,7 @@ export function ContactCta() {
       <div className="relative mx-auto grid max-w-[88rem] gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
         <div>
           <Reveal>
-            <p className="eyebrow flex items-center gap-3 text-brass">
+            <p className="eyebrow flex items-center gap-3 text-brass-light">
               <RegistrationMark size={16} />
               Request a Quote
             </p>
@@ -33,7 +33,7 @@ export function ContactCta() {
           <Reveal delay={90}>
             <h2 className="mt-7 max-w-3xl text-[length:var(--text-headline)] text-balance">
               Let&rsquo;s Bring Your Next Print to{" "}
-              <span className="italic text-brass">Life.</span>
+              <span className="italic text-brass-light">Life.</span>
             </h2>
           </Reveal>
 
@@ -53,7 +53,7 @@ export function ContactCta() {
                 href={company.phoneHref}
                 variant="ghost"
                 external
-                className="!text-paper/80 hover:!text-brass"
+                className="!text-paper/80 hover:!text-brass-light"
               >
                 Call {company.phone}
               </Action>
@@ -64,7 +64,7 @@ export function ContactCta() {
         {/* Imprint block -------------------------------------------- */}
         <Reveal delay={300}>
           <address className="border-l border-paper/20 pl-7 not-italic">
-            <p className="eyebrow text-brass">Works</p>
+            <p className="eyebrow text-brass-light">Works</p>
             <p className="mt-4 leading-relaxed text-paper/70">
               {company.address.lines.map((line) => (
                 <span key={line} className="block">

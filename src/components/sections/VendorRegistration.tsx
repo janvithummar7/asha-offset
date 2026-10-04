@@ -30,7 +30,7 @@ export function VendorRegistration() {
         <Reveal>
           <div className="relative h-full border border-ink/15 bg-cream p-7 sm:p-10">
             <CropMarks inset="0.7rem" />
-            <h3 className="eyebrow text-brass">Business Details</h3>
+            <h3 className="eyebrow text-brass-deep">Business Details</h3>
             <dl className="mt-6">
               {vendorDetails.map((row) => (
                 <FactRow
@@ -49,7 +49,7 @@ export function VendorRegistration() {
           <Reveal delay={110}>
             <div className="relative border border-ink/15 bg-paper p-7 sm:p-8">
               <CropMarks inset="0.55rem" />
-              <h3 className="eyebrow text-brass">Registration Status</h3>
+              <h3 className="eyebrow text-brass-deep">Registration Status</h3>
               <dl className="mt-6">
                 {publicCredentials.map((row) => (
                   <FactRow key={row.term} term={row.term} detail={row.detail} />

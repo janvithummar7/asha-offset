@@ -35,7 +35,7 @@ export function AboutBlock({
                   aria-hidden="true"
                 />
               </div>
-              <figcaption className="eyebrow mt-3 flex items-center justify-between text-ink/45">
+              <figcaption className="eyebrow mt-3 flex items-center justify-between text-ink/65">
                 <span>Gundala Road, Gondal</span>
                 <span>Plate 02</span>
               </figcaption>
@@ -83,7 +83,7 @@ export function AboutBlock({
           <Reveal delay={420}>
             <div className="relative mt-11 border border-ink/15 bg-paper p-6 sm:p-8">
               <CropMarks inset="0.55rem" />
-              <h3 className="eyebrow text-brass">Company Information</h3>
+              <h3 className="eyebrow text-brass-deep">Company Information</h3>
               <dl className="mt-5">
                 {companyFacts.map((fact) => (
                   <FactRow

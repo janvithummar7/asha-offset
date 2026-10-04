@@ -74,7 +74,7 @@ export function FactRow({
   href?: string;
   tone?: "ink" | "paper";
 }) {
-  const muted = tone === "ink" ? "text-ink/45" : "text-paper/45";
+  const muted = tone === "ink" ? "text-ink/65" : "text-paper/60";
   const border = tone === "ink" ? "border-ink/12" : "border-paper/15";
 
   return (

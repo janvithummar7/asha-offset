@@ -39,14 +39,29 @@ export const company = {
 /* Navigation                                                          */
 /* ------------------------------------------------------------------ */
 
-export const navLinks = [
+/**
+ * `match` lists any additional routes that should light up this nav item.
+ * Capabilities covers both the manufacturing and machinery pages, which
+ * are separate URLs so each can target its own search terms.
+ */
+export const navLinks: {
+  label: string;
+  href: string;
+  match?: string[];
+}[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Products", href: "/products" },
-  { label: "Capabilities", href: "/capabilities" },
+  { label: "Capabilities", href: "/manufacturing", match: ["/machinery"] },
   { label: "Industries", href: "/industries" },
   { label: "Quality", href: "/quality" },
   { label: "Contact", href: "/contact" },
+];
+
+/** Secondary links, surfaced in the footer rather than the masthead. */
+export const footerLinks = [
+  { label: "Machinery", href: "/machinery" },
+  { label: "Certifications", href: "/certifications" },
 ] as const;
 
 /* ------------------------------------------------------------------ */

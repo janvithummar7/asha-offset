@@ -41,7 +41,7 @@ export function VisionMission() {
 
               <div className="relative">
                 <div className="flex items-center justify-between">
-                  <span className="eyebrow text-ink/35">{card.index}</span>
+                  <span className="eyebrow text-ink/65">{card.index}</span>
                   <RegistrationMark
                     size={20}
                     className="text-brass/70 transition-transform duration-700 group-hover:rotate-90"

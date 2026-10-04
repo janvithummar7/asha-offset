@@ -42,14 +42,14 @@ export function WhyUs() {
               delay={i * 90}
               className="group grid grid-cols-[auto_1fr] gap-5 border-b border-ink/12 py-7 transition-colors duration-400 sm:gap-8 sm:py-8"
             >
-              <span className="eyebrow pt-2 text-ink/30 transition-colors duration-400 group-hover:text-burgundy">
+              <span className="eyebrow pt-2 text-ink/65 transition-colors duration-400 group-hover:text-burgundy">
                 {reason.index}
               </span>
               <div>
                 <h3 className="font-serif text-[1.375rem] leading-snug text-coffee transition-transform duration-400 group-hover:translate-x-1 sm:text-[1.75rem]">
                   {reason.title}
                 </h3>
-                <p className="measure mt-3 leading-relaxed text-ink/60">
+                <p className="measure mt-3 leading-relaxed text-ink/65">
                   {reason.description}
                 </p>
               </div>

@@ -1,18 +1,25 @@
-import type { Metadata } from "next";
 import { PageHeader } from "@/components/Section";
 import { QualitySheet } from "@/components/sections/QualitySheet";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { ContactCta } from "@/components/sections/ContactCta";
+import { JsonLd, breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Quality Assurance",
+export const metadata = pageMetadata({
+  title: "Print Quality Assurance | Asha Offset",
   description:
-    "Raw material inspection, colour matching and control, print quality inspection and a finishing & dispatch check on every order.",
-};
+    "Learn how Asha Offset maintains consistent print quality through raw material inspection, colour control, print inspection and finishing checks.",
+  path: "/quality",
+});
 
 export default function QualityPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Quality", path: "/quality" },
+        ])}
+      />
+
       <PageHeader
         index="08"
         label="Quality"

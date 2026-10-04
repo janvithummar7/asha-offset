@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { company, navLinks } from "@/lib/content";
 import { ColourBar } from "./print";
 
@@ -10,6 +10,7 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   // Compact the masthead once the reader has left the top of the page.
   useEffect(() => {
@@ -27,16 +28,33 @@ export function Nav() {
     setOpen(false);
   }
 
-  // Hold the page still while the mobile drawer is open.
+  // Hold the page still while the mobile drawer is open, and let Escape
+  // close it — a drawer you can open with the keyboard must close that way.
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKey);
+
     return () => {
       document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = (link: { href: string; match?: string[] }) => {
+    if (link.href === "/") return pathname === "/";
+    return [link.href, ...(link.match ?? [])].some((p) =>
+      pathname.startsWith(p),
+    );
+  };
 
   /**
    * Every route except the home page opens with the dark <PageHeader>
@@ -79,7 +97,7 @@ export function Nav() {
           <span
             className={`eyebrow overflow-hidden transition-all duration-500 ${
               scrolled ? "mt-0 max-h-0 opacity-0" : "mt-1.5 max-h-5 opacity-100"
-            } ${onDark ? "text-paper/50" : "text-ink/45"}`}
+            } ${onDark ? "text-paper/60" : "text-ink/65"}`}
           >
             Printing Excellence Since {company.since}
           </span>
@@ -91,9 +109,9 @@ export function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              aria-current={isActive(link.href) ? "page" : undefined}
+              aria-current={isActive(link) ? "page" : undefined}
               className={`eyebrow relative py-2 transition-colors duration-300 ${
-                isActive(link.href)
+                isActive(link)
                   ? onDark
                     ? "text-brass"
                     : "text-burgundy"
@@ -106,7 +124,7 @@ export function Nav() {
               {/* Brass underscore marks the current page. */}
               <span
                 className={`absolute inset-x-0 -bottom-0.5 h-px origin-left bg-brass transition-transform duration-300 ${
-                  isActive(link.href) ? "scale-x-100" : "scale-x-0"
+                  isActive(link) ? "scale-x-100" : "scale-x-0"
                 }`}
                 aria-hidden="true"
               />
@@ -129,17 +147,17 @@ export function Nav() {
           {/* Drawer toggle ------------------------------------------ */}
           <button
             type="button"
+            ref={toggleRef}
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             className={`flex h-11 w-11 items-center justify-center border transition-colors lg:hidden ${
               onDark
                 ? "border-paper/30 text-paper hover:border-paper/60"
                 : "border-ink/20 text-ink hover:border-ink/45"
             }`}
           >
-            <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
             <span className="relative block h-3 w-5" aria-hidden="true">
               <span
                 className={`absolute left-0 block h-px w-5 bg-current transition-all duration-300 ${
@@ -162,8 +180,11 @@ export function Nav() {
       </div>
 
       {/* Mobile drawer ---------------------------------------------- */}
+      {/* `inert` while collapsed: the drawer stays in the DOM so it can
+          animate, but its links leave the tab order and the a11y tree. */}
       <div
         id="mobile-nav"
+        inert={!open}
         className={`overflow-hidden border-t border-ink/10 bg-paper transition-[max-height,opacity] duration-500 lg:hidden ${
           open ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0"
         }`}
@@ -173,15 +194,15 @@ export function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              aria-current={isActive(link.href) ? "page" : undefined}
+              aria-current={isActive(link) ? "page" : undefined}
               className="flex items-baseline gap-4 border-b border-ink/10 py-4 last:border-0"
             >
-              <span className="eyebrow text-ink/30">
+              <span className="eyebrow text-ink/65">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span
                 className={`font-serif text-2xl ${
-                  isActive(link.href) ? "text-burgundy" : "text-ink"
+                  isActive(link) ? "text-burgundy" : "text-ink"
                 }`}
               >
                 {link.label}

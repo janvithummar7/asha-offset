@@ -68,7 +68,7 @@ export function Hero() {
           <Reveal delay={200} variant="image">
             {/* The sheet the photograph is mounted on. */}
             <div className="relative border border-ink/15 bg-cream p-3 shadow-[0_30px_60px_-40px_rgb(25_24_23/0.55)] sm:p-4">
-              <CropMarks inset="-0.4rem" className="text-ink/35" />
+              <CropMarks inset="-0.4rem" className="text-ink/65" />
 
               <div className="relative aspect-4/5 overflow-hidden sm:aspect-3/4">
                 <Image

@@ -1,18 +1,25 @@
-import type { Metadata } from "next";
 import { PageHeader } from "@/components/Section";
 import { IndustriesGrid } from "@/components/sections/IndustriesGrid";
 import { ProductShowcase } from "@/components/sections/ProductShowcase";
 import { ContactCta } from "@/components/sections/ContactCta";
+import { JsonLd, breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Industries",
+export const metadata = pageMetadata({
+  title: "Industries We Serve | Asha Offset",
   description:
-    "Printing for FMCG, electronics, food & beverage and agriculture — labels, stickers, compliance packaging and branded cartons.",
-};
+    "Asha Offset provides labels, packaging and commercial printing solutions for FMCG, electronics, food & beverage and agriculture businesses.",
+  path: "/industries",
+});
 
 export default function IndustriesPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Industries", path: "/industries" },
+        ])}
+      />
+
       <PageHeader
         index="07"
         label="Industries"

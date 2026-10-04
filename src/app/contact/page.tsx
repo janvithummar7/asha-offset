@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { PageHeader, Section } from "@/components/Section";
 import { ContactForm } from "@/components/ContactForm";
 import { Reveal } from "@/components/Reveal";
@@ -10,12 +9,7 @@ import {
 } from "@/components/print";
 import { Action } from "@/components/ui";
 import { company } from "@/lib/content";
-
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Request a quote from Asha Offset — Gundala Road, Jasmatnagar Main Road, Near Bus Stand, Gondal, Gujarat 360311. Call +91 98252 46380.",
-};
+import { JsonLd, breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
 const MAP_SRC = `https://www.google.com/maps?q=${encodeURIComponent(
   company.mapQuery,
@@ -25,9 +19,22 @@ const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
   company.address.full,
 )}`;
 
+export const metadata = pageMetadata({
+  title: "Contact Asha Offset | Gondal Printing & Packaging",
+  description:
+    "Contact Asha Offset in Gondal, Gujarat for labels, stickers, packaging, cartons and commercial printing requirements. Request a quote today.",
+  path: "/contact",
+});
+
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
+
       <PageHeader
         index="13"
         label="Contact"
@@ -58,7 +65,7 @@ export default function ContactPage() {
                 <ColourBar className="mt-6 h-1.5 w-24" />
 
                 <address className="mt-7 not-italic">
-                  <p className="eyebrow text-ink/40">Works</p>
+                  <p className="eyebrow text-ink/65">Works</p>
                   <p className="mt-2.5 leading-relaxed text-ink/75">
                     {company.address.lines.map((line) => (
                       <span key={line} className="block">
@@ -67,7 +74,7 @@ export default function ContactPage() {
                     ))}
                   </p>
 
-                  <p className="eyebrow mt-7 text-ink/40">Phone</p>
+                  <p className="eyebrow mt-7 text-ink/65">Phone</p>
                   <p className="mt-2">
                     <a
                       href={company.phoneHref}
@@ -77,7 +84,7 @@ export default function ContactPage() {
                     </a>
                   </p>
 
-                  <p className="eyebrow mt-6 text-ink/40">Email</p>
+                  <p className="eyebrow mt-6 text-ink/65">Email</p>
                   <p className="mt-2">
                     <a
                       href={company.emailHref}
@@ -105,7 +112,7 @@ export default function ContactPage() {
                   lines={["EST. 1998", "Gondal, Gujarat"]}
                   className="border-burgundy/50 text-burgundy"
                 />
-                <p className="text-sm leading-relaxed text-ink/55">
+                <p className="text-[0.9375rem] leading-relaxed text-ink/65">
                   Printing from the same town for over twenty-five years.
                 </p>
               </div>
@@ -123,7 +130,7 @@ export default function ContactPage() {
       <Section tone="paper" className="!py-0 sm:!py-0">
         <div className="grid gap-px border border-ink/15 bg-ink/12 lg:grid-cols-[0.8fr_1.2fr]">
           <Reveal className="bg-cream p-8 sm:p-10">
-            <p className="eyebrow text-brass">Find Us</p>
+            <p className="eyebrow text-brass-deep">Find Us</p>
             <h2 className="mt-5 font-serif text-[clamp(1.5rem,2.6vw,2.125rem)] text-coffee">
               {company.city}, {company.state}
             </h2>

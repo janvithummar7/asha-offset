@@ -1,18 +1,25 @@
-import type { Metadata } from "next";
 import { PageHeader } from "@/components/Section";
 import { Credentials } from "@/components/sections/Credentials";
 import { VendorRegistration } from "@/components/sections/VendorRegistration";
 import { ContactCta } from "@/components/sections/ContactCta";
+import { JsonLd, breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Certifications & Vendor Registration",
+export const metadata = pageMetadata({
+  title: "Certifications & Vendor Registration | Asha Offset",
   description:
-    "Asha Offset is GST registered and Udyam registered. Vendor registration details for procurement teams in Gondal, Gujarat.",
-};
+    "Asha Offset is GST registered and Udyam registered. Vendor registration and business details for procurement teams, from our Gondal, Gujarat works.",
+  path: "/certifications",
+});
 
 export default function CertificationsPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Certifications", path: "/certifications" },
+        ])}
+      />
+
       <PageHeader
         index="11"
         label="Credentials"

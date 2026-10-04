@@ -118,7 +118,7 @@ export function Facility() {
             />
             <div className="relative">
               <div className="flex items-center justify-between">
-                <span className="eyebrow text-ink/30">{step.index}</span>
+                <span className="eyebrow text-ink/65">{step.index}</span>
                 <span
                   className="h-px w-8 bg-brass transition-all duration-500 group-hover:w-14"
                   aria-hidden="true"
@@ -153,7 +153,7 @@ export function Facility() {
                   aria-hidden="true"
                 />
               </div>
-              <figcaption className="eyebrow mt-3 flex items-center justify-between gap-3 text-ink/45">
+              <figcaption className="eyebrow mt-3 flex items-center justify-between gap-3 text-ink/65">
                 <span>{plate.caption}</span>
                 <span className="flex items-center gap-3">
                   <ColourBar className="h-1.5 w-12" />

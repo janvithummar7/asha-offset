@@ -1,20 +1,27 @@
-import type { Metadata } from "next";
 import { PageHeader } from "@/components/Section";
 import { StatStrip } from "@/components/StatStrip";
 import { AboutBlock } from "@/components/sections/AboutBlock";
 import { VisionMission } from "@/components/sections/VisionMission";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { ContactCta } from "@/components/sections/ContactCta";
+import { JsonLd, breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us",
+export const metadata = pageMetadata({
+  title: "About Asha Offset | Printing Company Since 1998",
   description:
-    "Established in 1998 by Mr. Ashokbhai Thummar, Asha Offset has grown from a traditional printing business into a printing and packaging partner for businesses across industries.",
-};
+    "Learn about Asha Offset, a Gondal-based printing and packaging company founded in 1998, offering commercial printing, labels, stickers and packaging solutions.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "About", path: "/about" },
+        ])}
+      />
+
       <PageHeader
         index="01"
         label="About"

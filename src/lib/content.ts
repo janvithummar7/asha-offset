@@ -30,8 +30,8 @@ export const company = {
   state: "Gujarat",
   shortLocation: "Gondal, Gujarat",
   experience: `${yearsInBusiness}+ Years`,
-  phone: "+91 98252 46380",
-  phoneHref: "tel:+919825246380",
+  phone: "+91 96648 15522",
+  phoneHref: "tel:+919664815522",
   email: "ashaoffset01@gmail.com",
   emailHref: "mailto:ashaoffset01@gmail.com",
   address: {

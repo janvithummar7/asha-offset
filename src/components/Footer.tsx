@@ -4,9 +4,10 @@ import { Reveal } from "./Reveal";
 import { SectionDivider } from "./SectionDivider";
 import { Action } from "./ui";
 
-const DIRECTIONS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  company.address.full,
-)}`;
+const directionsUrl = (address: string) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
+const LOCATIONS = [company.address, company.secondAddress];
 
 /** Two short lists read faster than one long one of nine. */
 const EXPLORE = [
@@ -111,26 +112,32 @@ export function Footer() {
           <Reveal variant="drop" delay={280}>
             <h2 className="eyebrow text-brass-light">Visit &amp; contact</h2>
             <address className="mt-5 space-y-5 not-italic">
-              <p className="leading-relaxed text-paper/80">
-                {company.address.lines.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
-              </p>
-
-              <p>
-                <a
-                  href={DIRECTIONS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="eyebrow inline-flex items-center gap-2 text-brass-light underline decoration-brass-light/50 underline-offset-4 transition-colors hover:text-paper"
-                >
-                  Get directions
-                  <span aria-hidden="true">↗</span>
-                  <span className="sr-only">(opens Google Maps in a new tab)</span>
-                </a>
-              </p>
+              {LOCATIONS.map((location) => (
+                <div key={location.area}>
+                  <p className="eyebrow text-paper/60">{location.area}</p>
+                  <p className="mt-2 leading-relaxed text-paper/80">
+                    {location.lines.map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
+                  </p>
+                  <p className="mt-2">
+                    <a
+                      href={directionsUrl(location.full)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="eyebrow inline-flex items-center gap-2 text-brass-light underline decoration-brass-light/50 underline-offset-4 transition-colors hover:text-paper"
+                    >
+                      Get directions
+                      <span aria-hidden="true">↗</span>
+                      <span className="sr-only">
+                        to {location.area} (opens Google Maps in a new tab)
+                      </span>
+                    </a>
+                  </p>
+                </div>
+              ))}
 
               <ul className="space-y-2 text-paper/80">
                 <li>

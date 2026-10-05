@@ -4,7 +4,8 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { MobileCta } from "@/components/MobileCta";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { company, productGroups } from "@/lib/content";
+import { SideScrollbar } from "@/components/SideScrollbar";
+import { company, productGroups, yearsInBusiness } from "@/lib/content";
 import { SITE_URL, OG_IMAGE } from "@/lib/seo";
 import "./globals.css";
 
@@ -51,14 +52,14 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: "Asha Offset | Printing & Packaging Company in Gondal, Gujarat",
     description:
-      "Precision printing, industrial labels and packaging solutions built on 25+ years of experience. Gondal, Gujarat.",
+      `Precision printing, industrial labels and packaging solutions built on ${yearsInBusiness}+ years of experience. Gondal, Gujarat.`,
     images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "Asha Offset | Printing & Packaging Company in Gondal, Gujarat",
     description:
-      "Precision printing, industrial labels and packaging solutions built on 25+ years of experience. Gondal, Gujarat.",
+      `Precision printing, industrial labels and packaging solutions built on ${yearsInBusiness}+ years of experience. Gondal, Gujarat.`,
     images: [OG_IMAGE.url],
   },
   robots: {
@@ -182,6 +183,7 @@ export default function RootLayout({
         </a>
 
         <ScrollProgress />
+        <SideScrollbar />
         <Nav />
         <main id="main">{children}</main>
         <Footer />

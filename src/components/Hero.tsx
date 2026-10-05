@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment, useEffect, useRef } from "react";
+import { company, yearsInBusiness } from "@/lib/content";
 import { Action } from "./ui";
 
 /**
@@ -19,7 +20,7 @@ const VIDEO_URL = "/hero/hero-scrub.mp4";
 const VIDEO_BYTES = 14537714;
 /** Scroll progress at which the film reaches its last frame. */
 const FILM_END = 0.92;
-const START_YEAR = 1998;
+const START_YEAR = company.since;
 
 const STATIC_GATES = ["(prefers-reduced-motion: reduce)"];
 
@@ -34,7 +35,7 @@ type Step = {
   body: string;
 };
 
-const YEARS = new Date().getFullYear() - START_YEAR;
+const YEARS = yearsInBusiness;
 
 const STEPS: Step[] = [
   {

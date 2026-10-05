@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { aboutParagraphs, companyFacts, company } from "@/lib/content";
+import {
+  aboutParagraphs,
+  companyFacts,
+  company,
+  yearsInBusiness,
+} from "@/lib/content";
 import { Reveal } from "../Reveal";
 import { Section, SectionHead } from "../Section";
 import { CropMarks, Folio, RegistrationMark } from "../print";
@@ -52,7 +57,7 @@ export function AboutBlock({
                 size={18}
                 className="mt-1.5 shrink-0 text-brass"
               />
-              25 years of making print matter.
+              {yearsInBusiness} years of making print matter.
             </p>
           </Reveal>
         </div>

@@ -133,6 +133,113 @@
 }
 
 /* ================================================================== */
+/*  Scrollbar                                                          */
+/*  The page's own scrollbar is replaced by <SideScrollbar /> (styles   */
+/*  at the end of this file) once scripts run. What is below styles    */
+/*  every other scroller — the contact form's textarea, any overflow   */
+/*  strip — and is the fallback when JavaScript is off: a cream gutter */
+/*  ruled like a printer's scale, with a navy "ink" thumb that warms   */
+/*  to Asha red on hover and to gold while dragged. The thumb floats   */
+/*  inside the track (transparent border + padding-box clip) so it     */
+/*  reads as a pill rather than a bar.                                 */
+/* ================================================================== */
+
+/* Chromium, Edge and Safari. Gradients and rounding need these pseudo-
+   elements; Firefox takes the plain colour pair further down. */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-cream);
+}
+
+/* Short tick marks down the left edge, like a ruler. */
+::-webkit-scrollbar-track:vertical {
+  border-left: 1px solid var(--color-ink-12);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--color-ink-20) 0 1px,
+    transparent 1px 10px
+  );
+  background-repeat: no-repeat;
+  background-size: 4px 100%;
+}
+
+::-webkit-scrollbar-track:horizontal {
+  border-top: 1px solid var(--color-ink-12);
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+  background-image: linear-gradient(
+    180deg,
+    var(--color-blue),
+    var(--color-coffee)
+  );
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-blue),
+    var(--color-coffee)
+  );
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(
+    180deg,
+    var(--color-plate-m),
+    var(--color-burgundy)
+  );
+}
+
+::-webkit-scrollbar-thumb:horizontal:hover {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-plate-m),
+    var(--color-burgundy)
+  );
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-image: linear-gradient(
+    180deg,
+    var(--color-brass),
+    var(--color-brass-deep)
+  );
+}
+
+::-webkit-scrollbar-thumb:horizontal:active {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-brass),
+    var(--color-brass-deep)
+  );
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: var(--color-cream);
+}
+
+/* Firefox. Chromium 121+ honours scrollbar-color in preference to the
+   pseudo-elements above, which would throw away the gradient and the
+   rounding — so only browsers without them get this. */
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-color: var(--color-coffee) var(--color-cream);
+  }
+}
+
+/* ================================================================== */
 /*  Textures                                                           */
 /*  Kept deliberately faint — the page must stay readable.             */
 /* ================================================================== */
@@ -989,3 +1096,136 @@
 }
 .bar-in { animation: bar-in 0.7s var(--ease-paper) 0.6s both; }
 @media (prefers-reduced-motion: reduce) { .bar-in { animation: none; } }
+
+/* ================================================================== */
+/*  Side scrollbar                                                     */
+/*  Three separate inks — red, yellow, blue — down the right edge.     */
+/*  Each segment fills with solid colour as the page scrolls, and a    */
+/*  capsule thumb takes the colour of the ink it is passing through.   */
+/*  SideScrollbar.tsx writes --p (thumb centre, 0–1), --th / --ty      */
+/*  (thumb size and offset) and data-seg (which ink is under it).      */
+/* ================================================================== */
+
+/* Swap out the native page scrollbar — only once scripts have run, and
+   never in forced-colors mode, where the system scrollbar stays put. */
+@media (forced-colors: none) {
+  html[data-js="on"] {
+    scrollbar-width: none;
+  }
+  html[data-js="on"]::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.side-scroll {
+  --tc: var(--color-plate-m);
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: 61;
+  width: 20px;
+  pointer-events: none;
+}
+/* Short pages with nothing to scroll. visibility, not display, so the track
+   keeps its size and the thumb can be measured the moment the page grows. */
+.side-scroll[data-idle] { visibility: hidden; }
+.side-scroll[data-seg="1"] { --tc: var(--color-plate-y); }
+.side-scroll[data-seg="2"] { --tc: var(--color-plate-c); }
+
+.side-track {
+  position: absolute;
+  inset: 14px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: auto;
+}
+/* An 8px bar is a fiddly target; this widens the clickable strip. */
+.side-track::before {
+  content: "";
+  position: absolute;
+  inset: 0 -6px;
+}
+
+.side-seg {
+  --f: clamp(0, calc(var(--p, 0) * 3 - var(--i)), 1);
+  flex: 1 1 0;
+  border-radius: 999px;
+  /* Solid ink poured in from the top over a pale tint of the same ink. */
+  background:
+    linear-gradient(var(--c), var(--c)) top / 100% calc(var(--f) * 100%) no-repeat,
+    var(--tint);
+  /* A faint paper edge keeps the pale tints readable on the dark hero. */
+  box-shadow: 0 0 0 1px rgb(251 249 244 / 0.4);
+}
+.side-seg:nth-child(1) { --c: var(--color-plate-m); --tint: rgb(216 40 58 / 0.28); }
+.side-seg:nth-child(2) { --c: var(--color-plate-y); --tint: rgb(242 183 5 / 0.4); }
+.side-seg:nth-child(3) { --c: var(--color-plate-c); --tint: rgb(27 95 168 / 0.3); }
+
+.side-thumb {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  right: -2px;
+  height: var(--th, 64px);
+  transform: translateY(var(--ty, 0px));
+  will-change: transform;
+  border-radius: 999px;
+  background: var(--tc);
+  /* Paper ring, then a hairline of ink, so the capsule holds its edge on
+     paper, on the dark hero and against its own filled segment. */
+  box-shadow:
+    0 0 0 2px var(--color-paper),
+    0 0 0 3px rgb(13 27 46 / 0.28),
+    0 4px 12px rgb(13 27 46 / 0.28);
+  cursor: grab;
+  touch-action: none;
+  transition: background-color 0.45s var(--ease-paper);
+}
+.side-thumb:hover {
+  filter: brightness(1.08) saturate(1.1);
+}
+.side-scroll[data-drag] .side-thumb {
+  cursor: grabbing;
+}
+body:has(.side-scroll[data-drag]) {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Clear the fixed call bar that phones show along the bottom. */
+@media (max-width: 639px) {
+  .side-track {
+    bottom: 4.5rem;
+  }
+}
+
+/* Touch screens scroll by finger, so the bar shrinks to a slim,
+   non-interactive position indicator. */
+@media (pointer: coarse) {
+  .side-scroll {
+    width: 10px;
+  }
+  .side-track {
+    inset: 14px 3px;
+    gap: 4px;
+    pointer-events: none;
+  }
+  .side-track::before {
+    display: none;
+  }
+  .side-thumb {
+    left: 0;
+    right: 0;
+    box-shadow: none;
+    pointer-events: none;
+  }
+}
+@media (pointer: coarse) and (max-width: 639px) {
+  .side-track {
+    bottom: 4.5rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .side-scroll { display: none; }
+}

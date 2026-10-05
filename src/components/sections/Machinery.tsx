@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { heidelbergCopy, machines } from "@/lib/content";
+import { machinePhoto } from "@/lib/assets";
 import { Reveal } from "../Reveal";
 import { Section, SectionHead } from "../Section";
 import { ColourBar, CropMarks, InkStamp } from "../print";
@@ -89,12 +90,35 @@ export function Machinery({ showLabel = true }: { showLabel?: boolean }) {
       </Reveal>
 
       <div className="mt-6 border-t border-ink/15">
-        {machines.map((machine, i) => (
+        {machines.map((machine, i) => {
+          // A photo of the machine, if one has been dropped into
+          // /public/images/machinery (see src/lib/assets.ts).
+          const photo = machinePhoto(machine.name);
+
+          return (
           <Reveal key={machine.index} delay={i * 80}>
-            <article className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 border-b border-ink/12 py-6 transition-colors duration-400 hover:bg-cream sm:gap-8 sm:py-7">
+            <article
+              className={`group grid items-center gap-5 border-b border-ink/12 py-6 transition-colors duration-400 hover:bg-cream sm:gap-8 sm:py-7 ${
+                photo
+                  ? "grid-cols-[auto_auto_1fr_auto]"
+                  : "grid-cols-[auto_1fr_auto]"
+              }`}
+            >
               <span className="eyebrow text-ink/65 transition-colors group-hover:text-burgundy">
                 {machine.index}
               </span>
+
+              {photo && (
+                <span className="relative block h-16 w-24 overflow-hidden border border-ink/15 sm:h-20 sm:w-32">
+                  <Image
+                    src={photo}
+                    alt={`${machine.name} at the Asha Offset works`}
+                    fill
+                    sizes="128px"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </span>
+              )}
 
               <div>
                 <h4 className="font-serif text-[1.25rem] leading-snug text-coffee sm:text-[1.5rem]">
@@ -111,7 +135,8 @@ export function Machinery({ showLabel = true }: { showLabel?: boolean }) {
               </span>
             </article>
           </Reveal>
-        ))}
+          );
+        })}
       </div>
     </Section>
   );

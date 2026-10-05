@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { productGroups } from "@/lib/content";
-import { ProductArt } from "../ProductArt";
+import { ProductPlate } from "../ProductPlate";
 import { Reveal } from "../Reveal";
 import { Section, SectionHead } from "../Section";
 import { CropMarks } from "../print";
@@ -33,7 +33,10 @@ export function HomeProducts() {
             >
               <div className="relative aspect-5/4 overflow-hidden border-b border-ink/12">
                 <div className="float-on-hover h-full w-full transition-transform duration-[1.2s] ease-[var(--ease-paper)] group-hover:scale-[1.06]">
-                  <ProductArt art={group.items[0].art} />
+                  <ProductPlate
+                    item={group.items[0]}
+                    sizes="(max-width: 768px) 92vw, 30vw"
+                  />
                 </div>
                 <div
                   className="halftone pointer-events-none absolute inset-0 opacity-[0.28]"

@@ -7,9 +7,9 @@ import { Action, FactRow } from "../ui";
 /**
  * B2B vendor-onboarding block.
  *
- * Only non-sensitive fields appear here. PAN, GST number, Udyam number
- * and bank account details are intentionally withheld from the public
- * site and shared directly with a procurement contact instead.
+ * Only non-sensitive fields appear here. Bank account details and the
+ * cancelled cheque are intentionally withheld from the public site and
+ * shared directly with a procurement contact instead.
  */
 export function VendorRegistration() {
   return (
@@ -62,9 +62,8 @@ export function VendorRegistration() {
             <div className="relative flex flex-1 flex-col justify-between gap-7 border border-ink/15 bg-ink p-7 text-paper sm:p-8 on-ink">
               <div>
                 <p className="leading-relaxed text-paper/70">
-                  Registration numbers, PAN and banking details are shared
-                  directly with your procurement team — not published on this
-                  site.
+                  Bank details and the cancelled cheque are shared directly
+                  with your procurement team — not published on this site.
                 </p>
                 <div className="mt-7">
                   <Action href="/contact" variant="outline-light">

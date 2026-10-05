@@ -8,16 +8,17 @@ import {
   RegistrationMark,
 } from "@/components/print";
 import { Action } from "@/components/ui";
-import { company } from "@/lib/content";
+import { company, yearsInBusiness } from "@/lib/content";
 import { JsonLd, breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
 const MAP_SRC = `https://www.google.com/maps?q=${encodeURIComponent(
   company.mapQuery,
 )}&output=embed`;
 
-const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  company.address.full,
-)}`;
+const directionsUrl = (address: string) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
+const LOCATIONS = [company.address, company.secondAddress];
 
 export const metadata = pageMetadata({
   title: "Contact Asha Offset | Gondal Printing & Packaging",
@@ -65,14 +66,18 @@ export default function ContactPage() {
                 <ColourBar className="mt-6 h-1.5 w-24" />
 
                 <address className="mt-7 not-italic">
-                  <p className="eyebrow text-ink/65">Works</p>
-                  <p className="mt-2.5 leading-relaxed text-ink/75">
-                    {company.address.lines.map((line) => (
-                      <span key={line} className="block">
-                        {line}
-                      </span>
-                    ))}
-                  </p>
+                  {LOCATIONS.map((location, i) => (
+                    <div key={location.area} className={i > 0 ? "mt-6" : ""}>
+                      <p className="eyebrow text-ink/65">{location.area}</p>
+                      <p className="mt-2.5 leading-relaxed text-ink/75">
+                        {location.lines.map((line) => (
+                          <span key={line} className="block">
+                            {line}
+                          </span>
+                        ))}
+                      </p>
+                    </div>
+                  ))}
 
                   <p className="eyebrow mt-7 text-ink/65">Phone</p>
                   <p className="mt-2">
@@ -113,7 +118,7 @@ export default function ContactPage() {
                   className="border-burgundy/50 text-burgundy"
                 />
                 <p className="text-[0.9375rem] leading-relaxed text-ink/65">
-                  Printing from the same town for over twenty-five years.
+                  Printing from the same town for over {yearsInBusiness} years.
                 </p>
               </div>
             </Reveal>
@@ -137,12 +142,19 @@ export default function ContactPage() {
             <p className="measure mt-5 leading-relaxed text-ink/65">
               Our works sit on Gundala Road near the bus stand, in the
               Jasmatnagar area of Gondal — a short drive from the Rajkot
-              highway.
+              highway. We are also at Jamvadi, on NH-27 near Shubham Zone.
             </p>
-            <div className="mt-8">
-              <Action href={MAP_LINK} variant="outline" external>
-                Get Directions
-              </Action>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {LOCATIONS.map((location) => (
+                <Action
+                  key={location.area}
+                  href={directionsUrl(location.full)}
+                  variant="outline"
+                  external
+                >
+                  Get Directions — {location.area}
+                </Action>
+              ))}
             </div>
           </Reveal>
 

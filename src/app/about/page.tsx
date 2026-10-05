@@ -3,7 +3,9 @@ import { StatStrip } from "@/components/StatStrip";
 import { AboutBlock } from "@/components/sections/AboutBlock";
 import { VisionMission } from "@/components/sections/VisionMission";
 import { WhyUs } from "@/components/sections/WhyUs";
+import { Clients } from "@/components/sections/Clients";
 import { ContactCta } from "@/components/sections/ContactCta";
+import { yearsInBusiness } from "@/lib/content";
 import { JsonLd, breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -27,7 +29,7 @@ export default function AboutPage() {
         label="About"
         title={
           <>
-            Twenty-five years at the{" "}
+            {yearsInBusiness} years at the{" "}
             <span className="italic text-brass">press.</span>
           </>
         }
@@ -37,7 +39,8 @@ export default function AboutPage() {
       <AboutBlock showLabel={false} />
       <VisionMission />
       <WhyUs index="03" tone="stock" />
-      <ContactCta />
+      <Clients index="04" />
+      <ContactCta tone="stock" />
     </>
   );
 }

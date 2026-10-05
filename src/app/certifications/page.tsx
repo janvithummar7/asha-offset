@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/Section";
 import { Credentials } from "@/components/sections/Credentials";
 import { VendorRegistration } from "@/components/sections/VendorRegistration";
 import { ContactCta } from "@/components/sections/ContactCta";
+import { certificateFiles } from "@/lib/assets";
 import { JsonLd, breadcrumbSchema, pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -32,7 +33,7 @@ export default function CertificationsPage() {
         }
         lede="Everything a procurement team needs to open a vendor account — and nothing that belongs in a private file."
       />
-      <Credentials showLabel={false} />
+      <Credentials showLabel={false} files={certificateFiles()} />
       <VendorRegistration />
       <ContactCta tone="stock" />
     </>

@@ -1,5 +1,5 @@
 import { productGroups } from "@/lib/content";
-import { ProductArt } from "../ProductArt";
+import { ProductPlate } from "../ProductPlate";
 import { Reveal } from "../Reveal";
 import { Section, SectionHead } from "../Section";
 import { CropMarks } from "../print";
@@ -71,7 +71,10 @@ export function ProductShowcase({
                     {/* Plate ------------------------------------------ */}
                     <div className="relative aspect-5/4 overflow-hidden border-b border-ink/12">
                       <div className="h-full w-full transition-transform duration-[1.2s] ease-[var(--ease-paper)] group-hover:scale-[1.06]">
-                        <ProductArt art={item.art} />
+                        <ProductPlate
+                          item={item}
+                          sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
+                        />
                       </div>
                       {/* Halftone over the plate. */}
                       <div

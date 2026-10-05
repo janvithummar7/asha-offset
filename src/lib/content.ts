@@ -6,11 +6,22 @@
  * revenue or machinery specs that are not in that profile.
  */
 
+/** Year the company was founded. */
+const FOUNDED = 1998;
+
+/**
+ * Whole years in business, counted from the founding year. Every "28 years"
+ * on the site reads this one value, so it cannot drift out of step. It is
+ * evaluated when the site is built, so it moves on at the next deploy
+ * after each anniversary.
+ */
+export const yearsInBusiness = new Date().getFullYear() - FOUNDED;
+
 export const company = {
   name: "Asha Offset",
   nameUpper: "ASHA OFFSET",
   tagline: "Your Partner in Print.",
-  since: 1998,
+  since: FOUNDED,
   sinceLabel: "Printing Excellence Since 1998",
   founder: "Mr. Ashokbhai Thummar",
   businessType: "Manufacturer & Printing Service Provider",
@@ -18,17 +29,34 @@ export const company = {
   city: "Gondal",
   state: "Gujarat",
   shortLocation: "Gondal, Gujarat",
-  experience: "25+ Years",
+  experience: `${yearsInBusiness}+ Years`,
   phone: "+91 98252 46380",
   phoneHref: "tel:+919825246380",
   email: "ashaoffset01@gmail.com",
   emailHref: "mailto:ashaoffset01@gmail.com",
   address: {
+    /** Short name used to tell the two Gondal addresses apart. */
+    area: "Gundala Road",
     lines: [
       "Gundala Road, Jasmatnagar Main Road,",
       "Near Bus Stand, Gondal, Gujarat – 360311, India",
     ],
     full: "Gundala Road, Jasmatnagar Main Road, Near Bus Stand, Gondal, Gujarat – 360311, India",
+    postcode: "360311",
+  },
+  /**
+   * Second Gondal address, listed as the "Location" on the contact page of
+   * the Company Profile 2026 (the About page of the same profile lists
+   * Gundala Road).
+   */
+  secondAddress: {
+    area: "Jamvadi, NH-27",
+    lines: [
+      "Nr. Atic College, Shubham Zone,",
+      "Plot No. 5, NH-27, At Jamvadi,",
+      "Gondal, Gujarat – 360311, India",
+    ],
+    full: "Nr. Atic College, Shubham Zone, Plot No. 5, NH-27, At Jamvadi, Gondal, Gujarat 360311, India",
     postcode: "360311",
   },
   /** Used for the map embed — Gondal, Gujarat. */
@@ -71,7 +99,7 @@ export const footerLinks = [
 export type Stat = {
   /** Numeric portion, animated by the counter. */
   value: number;
-  /** Sits tight against the number, e.g. the "+" in "25+". */
+  /** Sits tight against the number, e.g. the "+" in "300,000+". */
   suffix?: string;
   /** Set smaller beside the number, e.g. "Sq. Ft." — keeps it on one line. */
   unit?: string;
@@ -79,7 +107,7 @@ export type Stat = {
 };
 
 export const stats: Stat[] = [
-  { value: 25, suffix: "+", label: "Years of Printing Excellence" },
+  { value: yearsInBusiness, suffix: "+", label: "Years of Printing Excellence" },
   { value: 1800, unit: "Sq. Ft.", label: "Production Facility" },
   { value: 300000, suffix: "+", label: "Labels Per Day" },
   { value: 20, suffix: "+", unit: "Tons", label: "Monthly Production" },
@@ -102,6 +130,12 @@ export const companyFacts = [
   { term: "Business Type", detail: company.businessType },
   { term: "Industry", detail: company.industry },
   { term: "Location", detail: company.shortLocation },
+  {
+    term: "Core Products",
+    detail:
+      "Labels, Stickers, Pamphlets, Brochures, Duplex Boxes, Mono Cartons, Corporate Printing",
+  },
+  { term: "Experience", detail: company.experience },
 ];
 
 export const vision =
@@ -109,6 +143,46 @@ export const vision =
 
 export const mission =
   "To provide premium printing services through advanced technology, skilled craftsmanship, timely delivery and customer-focused solutions that help our clients succeed in their markets.";
+
+/* ------------------------------------------------------------------ */
+/* Clients                                                             */
+/* ------------------------------------------------------------------ */
+
+export type Client = {
+  name: string;
+  /** Logo under /public. Replace with a higher-resolution file any time. */
+  src: string;
+  width: number;
+  height: number;
+};
+
+/**
+ * Key clients, as shown on page 16 of the Company Profile 2026 (logos
+ * extracted from that page). To add a client, drop the logo into
+ * /public/clients and add a line here.
+ */
+export const clients: Client[] = [
+  { name: "Florex Green", src: "/clients/florex-green.png", width: 641, height: 142 },
+  { name: "Mecro Power Control", src: "/clients/mecro-power-control.png", width: 624, height: 197 },
+  { name: "Reno", src: "/clients/reno.png", width: 310, height: 75 },
+  { name: "FastnFry", src: "/clients/fastnfry.png", width: 357, height: 127 },
+  { name: "Kishan Oils", src: "/clients/kishan-oils.png", width: 511, height: 383 },
+  { name: "Arino Seeds", src: "/clients/arino-seeds.png", width: 440, height: 138 },
+];
+
+export type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+};
+
+/**
+ * The profile's "Key Clients & Testimonials" page carries logos only, so
+ * there are no testimonials yet. Add an entry here only when a client has
+ * actually given one — the section shows them automatically.
+ */
+export const testimonials: Testimonial[] = [];
 
 /* ------------------------------------------------------------------ */
 /* Products                                                            */
@@ -357,7 +431,7 @@ export const qualitySteps = [
 export const reasons = [
   {
     index: "01",
-    title: "25+ Years of Experience",
+    title: `${yearsInBusiness}+ Years of Experience`,
     description:
       "Printing continuously from Gondal since 1998, through every change in the trade.",
   },
@@ -395,8 +469,10 @@ export const statement =
 /* ------------------------------------------------------------------ */
 
 /**
- * Public-facing only. PAN, GST number and bank account details are
- * deliberately NOT published here — they are shared on request.
+ * Public-facing only. Bank account details and the cancelled cheque are
+ * deliberately NOT published — they are shared directly with procurement
+ * teams. The GST and Udyam certificates are shown as scans (see
+ * /public/documents); PAN is not listed separately.
  */
 export const publicCredentials = [
   { term: "Company Name", detail: company.name },
@@ -404,22 +480,32 @@ export const publicCredentials = [
   { term: "Udyam Registered", detail: "Yes" },
 ];
 
+/**
+ * `file` is the scan's file name (no extension) in /public/documents. The
+ * page picks it up automatically — see certificateFiles() in assets.ts —
+ * and shows "Available on request" while there is no file. The cancelled
+ * cheque carries bank details, so it has no file and is never published.
+ * To add another certificate, add an entry here and drop its scan in.
+ */
 export const certificates = [
   {
     index: "01",
     title: "GST Registration Certificate",
+    file: "gst-certificate",
     description:
       "Goods & Services Tax registration issued under the Gujarat State Tax authority.",
   },
   {
     index: "02",
     title: "Udyam Registration Certificate",
+    file: "udyam-certificate",
     description:
       "MSME registration under the Ministry of Micro, Small & Medium Enterprises.",
   },
   {
     index: "03",
     title: "Cancelled Cheque",
+    file: null,
     description:
       "Bank verification document, shared directly with procurement teams on request.",
   },

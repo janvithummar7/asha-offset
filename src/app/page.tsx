@@ -4,6 +4,8 @@ import { AboutBlock } from "@/components/sections/AboutBlock";
 import { HomeProducts } from "@/components/home/HomeProducts";
 import { HomeCapabilities } from "@/components/home/HomeCapabilities";
 import { HomeIndustries } from "@/components/home/HomeIndustries";
+import { HomeClients } from "@/components/home/HomeClients";
+import { HomeCertificates } from "@/components/home/HomeCertificates";
 import { ContactCta } from "@/components/sections/ContactCta";
 import { JsonLd, pageMetadata, serviceSchema } from "@/lib/seo";
 
@@ -33,6 +35,8 @@ export default function HomePage() {
       <HomeProducts />
       <HomeCapabilities />
       <HomeIndustries />
+      <HomeClients />
+      <HomeCertificates />
       <ContactCta tone="stock" />
     </>
   );

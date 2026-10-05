@@ -39,7 +39,7 @@ export function Section({
 }
 
 /**
- * Section opening: running head, serif headline and optional standfirst.
+ * Section opening: running head, display headline and optional standfirst.
  */
 export function SectionHead({
   index,

@@ -52,7 +52,7 @@ export function AboutBlock({
 
           {/* Decorative marginal note. */}
           <Reveal delay={150}>
-            <p className="mt-9 flex items-start gap-3 font-serif text-xl italic leading-snug text-burgundy sm:text-2xl">
+            <p className="mt-9 flex items-start gap-3 font-display text-xl leading-snug text-burgundy sm:text-2xl">
               <RegistrationMark
                 size={18}
                 className="mt-1.5 shrink-0 text-brass"
@@ -72,7 +72,7 @@ export function AboutBlock({
               <>
                 Built on Experience.
                 <br />
-                Driven by <span className="italic text-burgundy">Print.</span>
+                Driven by <span className="accent text-burgundy">Print.</span>
               </>
             }
           />

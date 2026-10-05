@@ -5,7 +5,7 @@ import { SectionDivider } from "./SectionDivider";
 
 /**
  * Heritage figures, set like the statistics panel of a printed annual
- * report: large serif numerals over small uppercase labels.
+ * report: large stencil numerals over small uppercase labels.
  */
 export function StatStrip() {
   return (
@@ -37,7 +37,7 @@ export function StatStrip() {
           >
             <dt className="sr-only">{stat.label}</dt>
             <dd>
-              <span className="flex flex-wrap items-baseline gap-x-2 font-serif leading-none text-paper">
+              <span className="flex flex-wrap items-baseline gap-x-2 font-stencil leading-none text-paper">
                 <span className="text-[clamp(2rem,4.4vw,3.5rem)] whitespace-nowrap">
                   <Counter value={stat.value} suffix={stat.suffix} />
                 </span>

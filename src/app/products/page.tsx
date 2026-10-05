@@ -38,7 +38,7 @@ export default function ProductsPage() {
         label="Portfolio"
         title={
           <>
-            What We <span className="italic text-brass">Print</span>
+            What We <span className="accent text-brass">Print</span>
           </>
         }
         lede="From everyday commercial communication to industrial identification and product packaging."

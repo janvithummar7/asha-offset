@@ -1,5 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter, IBM_Plex_Mono } from "next/font/google";
+import {
+  Big_Shoulders,
+  Big_Shoulders_Stencil,
+  Hind_Vadodara,
+  IBM_Plex_Mono,
+} from "next/font/google";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { MobileCta } from "@/components/MobileCta";
@@ -9,18 +14,42 @@ import { company, productGroups, yearsInBusiness } from "@/lib/content";
 import { SITE_URL, OG_IMAGE } from "@/lib/seo";
 import "./globals.css";
 
-/* Editorial serif for display type. */
-const playfair = Playfair_Display({
+/*
+ * Type is the Asha design package's set — no serifs.
+ *
+ * Big Shoulders is the family Google Fonts used to list as "Big Shoulders
+ * Display": a tall, condensed, industrial face, like lettering on factory
+ * signs and carton markings. Its optical-size axis is loaded so the
+ * stylesheet can pin the large "Display" cut (see globals.css).
+ */
+const display = Big_Shoulders({
   subsets: ["latin"],
+  axes: ["opsz"],
   display: "swap",
-  variable: "--font-playfair",
+  // Next has no size-adjust metrics for this newer family name, so name the
+  // fallback ourselves (narrow system faces) rather than have it warn.
+  fallback: ["Arial Narrow", "Impact", "sans-serif"],
+  adjustFontFallback: false,
+  variable: "--font-big-shoulders",
 });
 
-/* Workhorse sans for body copy. */
-const inter = Inter({
+/* The stencil cut, for numbers and stamps — like marks sprayed on boxes. */
+const stencil = Big_Shoulders_Stencil({
   subsets: ["latin"],
+  axes: ["opsz"],
   display: "swap",
-  variable: "--font-inter",
+  preload: false,
+  fallback: ["Arial Narrow", "Impact", "sans-serif"],
+  adjustFontFallback: false,
+  variable: "--font-big-shoulders-stencil",
+});
+
+/* Body copy. From an Indian type foundry; it also carries Gujarati. */
+const hind = Hind_Vadodara({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  display: "swap",
+  variable: "--font-hind-vadodara",
 });
 
 /* Monospace for catalogue numbering and technical labels. */
@@ -161,7 +190,7 @@ export default function RootLayout({
       lang="en-IN"
       // The inline script below adds data-js="on" before hydration, on purpose.
       suppressHydrationWarning
-      className={`${playfair.variable} ${inter.variable} ${plexMono.variable}`}
+      className={`${display.variable} ${stencil.variable} ${hind.variable} ${plexMono.variable}`}
     >
       <head>
         {/* Marks the document as scripted before first paint, which is

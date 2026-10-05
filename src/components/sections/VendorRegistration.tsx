@@ -20,7 +20,7 @@ export function VendorRegistration() {
         title={
           <>
             Vendor Registration &amp; Business{" "}
-            <span className="italic text-burgundy">Details</span>
+            <span className="accent text-burgundy">Details</span>
           </>
         }
       />

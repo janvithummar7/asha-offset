@@ -40,7 +40,7 @@ export function ProductShowcase({
           label="Portfolio"
           title={
             <>
-              What We <span className="italic text-burgundy">Print</span>
+              What We <span className="accent text-burgundy">Print</span>
             </>
           }
           lede="From everyday commercial communication to industrial identification and product packaging."
@@ -53,7 +53,7 @@ export function ProductShowcase({
             {/* Chapter rule ------------------------------------------ */}
             <Reveal>
               <div className="rule-tick flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 pt-6">
-                <h3 className="font-serif text-[clamp(1.5rem,2.6vw,2.125rem)] text-coffee">
+                <h3 className="font-display text-[clamp(1.5rem,2.6vw,2.125rem)] text-coffee">
                   <span className="eyebrow mr-4 align-middle text-ink/65">
                     {group.index}
                   </span>
@@ -90,7 +90,7 @@ export function ProductShowcase({
                     {/* Entry copy ------------------------------------- */}
                     <div className="relative p-6 sm:p-7">
                       <CropMarks inset="0.5rem" />
-                      <h4 className="font-serif text-[1.375rem] text-coffee">
+                      <h4 className="font-display text-[1.375rem] text-coffee">
                         {item.name}
                       </h4>
                       <div

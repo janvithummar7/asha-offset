@@ -13,7 +13,7 @@ const FIGURES = [
         Maximum daily printing capacity for labels and stickers, using
         Heidelberg printing machines with a maximum printing size of
         approximately{" "}
-        <strong className="font-medium text-paper">146 × 240 mm</strong>.
+        <strong className="font-semibold text-paper">146 × 240 mm</strong>.
       </>
     ),
   },
@@ -81,7 +81,7 @@ export function Manufacturing({
               <>
                 Made for Consistency.
                 <br />
-                Built for <span className="italic text-brass">Volume.</span>
+                Built for <span className="accent text-brass">Volume.</span>
               </>
             }
             lede="Our 1,800 sq. ft. production facility is equipped with reliable printing and finishing machinery designed to support consistent quality and timely order fulfillment."
@@ -93,7 +93,7 @@ export function Manufacturing({
                 <div className="rule-tick grid gap-3 pt-6 sm:grid-cols-[auto_1fr] sm:gap-7">
                   <p className="eyebrow pt-2 text-paper/60">{figure.index}</p>
                   <div>
-                    <p className="font-serif text-[clamp(1.75rem,3.5vw,2.75rem)] leading-none text-paper">
+                    <p className="font-stencil text-[clamp(1.75rem,3.5vw,2.75rem)] leading-none text-paper">
                       {figure.value}
                     </p>
                     <p className="eyebrow mt-3 text-brass">{figure.unit}</p>

@@ -26,7 +26,7 @@ export function HomeCertificates() {
             title={
               <>
                 Registered. Compliant.{" "}
-                <span className="italic text-burgundy">Reliable.</span>
+                <span className="accent text-burgundy">Reliable.</span>
               </>
             }
             lede="GST and Udyam registered, with the certificates open to view. Bank details are shared directly with procurement teams."

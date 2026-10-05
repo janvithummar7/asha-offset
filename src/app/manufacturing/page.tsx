@@ -35,7 +35,7 @@ export default function ManufacturingPage() {
           <>
             Made for Consistency.
             <br />
-            Built for <span className="italic text-brass">Volume.</span>
+            Built for <span className="accent text-brass">Volume.</span>
           </>
         }
         lede="An 1,800 sq. ft. production floor in Gondal, Gujarat, geared for consistent quality and dependable turnaround on repeat and bulk orders."

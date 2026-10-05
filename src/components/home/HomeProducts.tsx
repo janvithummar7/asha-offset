@@ -18,7 +18,7 @@ export function HomeProducts() {
         label="Portfolio"
         title={
           <>
-            What We <span className="italic text-burgundy">Print</span>
+            What We <span className="accent text-burgundy">Print</span>
           </>
         }
         lede="Three ranges, from industrial identification to everyday commercial print and product packaging."
@@ -46,7 +46,7 @@ export function HomeProducts() {
               </div>
               <div className="relative p-6 sm:p-7">
                 <CropMarks inset="0.5rem" />
-                <h3 className="font-serif text-[1.5rem] text-coffee">
+                <h3 className="font-display text-[1.5rem] text-coffee">
                   {group.title}
                 </h3>
                 <div

@@ -25,7 +25,7 @@ export function Clients({
         label="Clients"
         title={
           <>
-            Trusted by <span className="italic text-burgundy">Businesses</span>
+            Trusted by <span className="accent text-burgundy">Businesses</span>
           </>
         }
         lede={`Working relationships built over ${yearsInBusiness} years across FMCG, electronics, food and agriculture.`}
@@ -38,11 +38,11 @@ export function Clients({
               <figure className="relative h-full border border-ink/15 bg-paper p-8">
                 <CropMarks inset="0.6rem" />
                 <RegistrationMark size={20} className="text-brass" />
-                <blockquote className="mt-6 font-serif text-xl italic leading-snug text-coffee">
+                <blockquote className="mt-6 font-display text-xl leading-snug text-coffee">
                   &ldquo;{item.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mt-7 border-t border-ink/12 pt-5">
-                  <p className="font-serif text-lg text-coffee">{item.name}</p>
+                  <p className="font-display text-lg text-coffee">{item.name}</p>
                   <p className="eyebrow mt-1.5 text-ink/65">
                     {item.role} — {item.company}
                   </p>

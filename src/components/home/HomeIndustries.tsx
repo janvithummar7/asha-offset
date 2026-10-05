@@ -17,7 +17,7 @@ export function HomeIndustries() {
         title={
           <>
             Printing Across{" "}
-            <span className="italic text-burgundy">Industries</span>
+            <span className="accent text-burgundy">Industries</span>
           </>
         }
         lede="Labels, packaging and commercial print for businesses that need it made right, every time."
@@ -32,7 +32,7 @@ export function HomeIndustries() {
                 className="group block h-full bg-[linear-gradient(var(--color-cream),var(--color-cream))] bg-[length:100%_0%] bg-bottom bg-no-repeat px-6 py-8 transition-[background-size] duration-500 hover:bg-[length:100%_100%] sm:px-8"
               >
                 <span className="eyebrow text-ink/65">{industry.index}</span>
-                <span className="mt-4 block font-serif text-[1.375rem] text-coffee sm:text-2xl">
+                <span className="mt-4 block font-display text-[1.375rem] text-coffee sm:text-2xl">
                   {industry.name}
                 </span>
                 <span

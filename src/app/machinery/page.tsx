@@ -24,7 +24,7 @@ export default function MachineryPage() {
           <>
             German presses,
             <br />
-            kept <span className="italic text-brass">running.</span>
+            kept <span className="accent text-brass">running.</span>
           </>
         }
         lede="Offset printing, lamination, cutting and die cutting — the equipment register of our Gondal works."

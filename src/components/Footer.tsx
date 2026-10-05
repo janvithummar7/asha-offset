@@ -71,7 +71,7 @@ export function Footer() {
               />
             </Link>
 
-            <p className="mt-6 font-serif text-2xl italic leading-snug text-paper">
+            <p className="mt-6 font-display text-3xl leading-snug text-paper">
               {company.tagline}
             </p>
             <p className="measure mt-4 leading-relaxed text-paper/75">

@@ -31,7 +31,7 @@ export default function NotFound() {
 
           <h1 className="mt-6 text-[length:var(--text-headline)] text-balance">
             This page came off the{" "}
-            <span className="italic text-burgundy">press.</span>
+            <span className="accent text-burgundy">press.</span>
           </h1>
 
           <p className="measure mt-6 text-[1.0625rem] leading-relaxed text-ink/75">

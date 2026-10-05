@@ -23,7 +23,7 @@ export const company = {
   tagline: "Your Partner in Print.",
   since: FOUNDED,
   sinceLabel: "Printing Excellence Since 1998",
-  founder: "Mr. Ashokbhai Thummar",
+  founder: "Mr. Ashokbhai Thummar and Mr. Tulsibhai Thummar",
   businessType: "Manufacturer & Printing Service Provider",
   industry: "Commercial Printing & Packaging Printing",
   city: "Gondal",
@@ -119,7 +119,7 @@ export const stats: Stat[] = [
 
 export const aboutParagraphs = [
   "Established in 1998, Asha Offset has grown from a traditional printing business into a dependable printing and packaging partner for businesses across industries.",
-  "Founded by Mr. Ashokbhai Thummar, the company continues to combine hands-on printing knowledge with modern production capabilities.",
+  "Founded by Mr. Ashokbhai Thummar and Mr. Tulsibhai Thummar, the company continues to combine hands-on printing knowledge with modern production capabilities.",
   "From labels and stickers to cartons, brochures and corporate printing, every project is handled with attention to detail, consistency and timely delivery.",
 ];
 

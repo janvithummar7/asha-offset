@@ -27,7 +27,7 @@ export default function IndustriesPage() {
           <>
             Four sectors,
             <br />
-            one <span className="italic text-brass">press room.</span>
+            one <span className="accent text-brass">press room.</span>
           </>
         }
         lede="The same press room serves the corner of the shelf, the back of the appliance and the seed sack in the field."

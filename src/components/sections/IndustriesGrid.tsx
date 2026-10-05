@@ -77,7 +77,7 @@ export function IndustriesGrid({
         title={
           <>
             Printing Across{" "}
-            <span className="italic text-burgundy">Industries</span>
+            <span className="accent text-burgundy">Industries</span>
           </>
         }
       />
@@ -104,7 +104,7 @@ export function IndustriesGrid({
                   </span>
                 </div>
 
-                <h3 className="mt-8 font-serif text-[clamp(1.5rem,2.6vw,2rem)] text-coffee">
+                <h3 className="mt-8 font-display text-[clamp(1.5rem,2.6vw,2rem)] text-coffee">
                   {industry.name}
                 </h3>
 

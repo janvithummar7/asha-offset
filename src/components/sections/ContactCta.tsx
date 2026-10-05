@@ -39,7 +39,7 @@ export function ContactCta({
           <Reveal delay={90}>
             <h2 className="mt-7 max-w-3xl text-[length:var(--text-headline)] text-balance">
               Let&rsquo;s Bring Your Next Print to{" "}
-              <span className="italic text-burgundy">Life.</span>
+              <span className="accent text-burgundy">Life.</span>
             </h2>
           </Reveal>
 

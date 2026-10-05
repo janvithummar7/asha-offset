@@ -47,7 +47,7 @@ export function HomeCapabilities() {
               <>
                 Made for Consistency.
                 <br />
-                Built for <span className="italic text-brass">Volume.</span>
+                Built for <span className="accent text-brass">Volume.</span>
               </>
             }
             lede="A 1,800 sq. ft. production facility with Heidelberg printing technology, capable of up to 300,000 labels a day."

@@ -25,7 +25,7 @@ export default function QualityPage() {
         label="Quality"
         title={
           <>
-            Checked at every <span className="italic text-brass">stage.</span>
+            Checked at every <span className="accent text-brass">stage.</span>
           </>
         }
         lede="Four checks stand between blank stock and a dispatched order. None of them is optional."

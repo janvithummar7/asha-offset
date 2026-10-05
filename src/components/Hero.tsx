@@ -470,7 +470,7 @@ export function Hero() {
                 </Fragment>
               ))}
               <span
-                className="w italic text-brass-light"
+                className="w accent text-brass-light"
                 style={{ "--th": 0.3 } as React.CSSProperties}
               >
                 Print.

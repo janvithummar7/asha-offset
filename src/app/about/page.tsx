@@ -30,7 +30,7 @@ export default function AboutPage() {
         title={
           <>
             {yearsInBusiness} years at the{" "}
-            <span className="italic text-brass">press.</span>
+            <span className="accent text-brass">press.</span>
           </>
         }
         lede="A printing house in Gondal, Gujarat — building long-term working relationships one order at a time since 1998."

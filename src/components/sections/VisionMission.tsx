@@ -17,7 +17,7 @@ export function VisionMission({ index = "02" }: { index?: string }) {
         title={
           <>
             Where Experience Meets{" "}
-            <span className="italic text-burgundy">Ambition</span>
+            <span className="accent text-burgundy">Ambition</span>
           </>
         }
       />

@@ -42,7 +42,7 @@ export default function ContactPage() {
         title={
           <>
             Let&rsquo;s Bring Your Next Print to{" "}
-            <span className="italic text-brass">Life.</span>
+            <span className="accent text-brass">Life.</span>
           </>
         }
         lede="Have a packaging, label or commercial printing requirement? Tell us what you need and our team will get back to you."
@@ -57,7 +57,7 @@ export default function ContactPage() {
                 <CropMarks inset="0.6rem" />
 
                 <div className="flex items-start justify-between">
-                  <h2 className="font-serif text-2xl text-coffee sm:text-3xl">
+                  <h2 className="font-display text-2xl text-coffee sm:text-3xl">
                     {company.name}
                   </h2>
                   <RegistrationMark size={22} className="text-brass" />
@@ -83,7 +83,7 @@ export default function ContactPage() {
                   <p className="mt-2">
                     <a
                       href={company.phoneHref}
-                      className="font-serif text-2xl text-coffee underline decoration-brass decoration-1 underline-offset-4 transition-colors hover:text-burgundy"
+                      className="font-display text-2xl text-coffee underline decoration-brass decoration-1 underline-offset-4 transition-colors hover:text-burgundy"
                     >
                       {company.phone}
                     </a>
@@ -136,7 +136,7 @@ export default function ContactPage() {
         <div className="grid gap-px border border-ink/15 bg-ink/12 lg:grid-cols-[0.8fr_1.2fr]">
           <Reveal className="bg-cream p-8 sm:p-10">
             <p className="eyebrow text-brass-deep">Find Us</p>
-            <h2 className="mt-5 font-serif text-[clamp(1.5rem,2.6vw,2.125rem)] text-coffee">
+            <h2 className="mt-5 font-display text-[clamp(1.5rem,2.6vw,2.125rem)] text-coffee">
               {company.city}, {company.state}
             </h2>
             <p className="measure mt-5 leading-relaxed text-ink/65">

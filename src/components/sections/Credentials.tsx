@@ -78,7 +78,7 @@ export function Credentials({
         title={
           <>
             Registered. Compliant.{" "}
-            <span className="italic text-burgundy">Reliable.</span>
+            <span className="accent text-burgundy">Reliable.</span>
           </>
         }
         lede="Our GST and Udyam registration certificates, open to view. Bank details and the cancelled cheque are shared directly with procurement teams."
@@ -148,7 +148,7 @@ export function Credentials({
                   </div>
                 )}
 
-                <h3 className="mt-7 font-serif text-[1.25rem] leading-snug text-coffee">
+                <h3 className="mt-7 font-display text-[1.25rem] leading-snug text-coffee">
                   {cert.title}
                 </h3>
                 <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink/65">

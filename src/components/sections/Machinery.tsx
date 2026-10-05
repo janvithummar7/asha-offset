@@ -15,7 +15,7 @@ export function Machinery({ showLabel = true }: { showLabel?: boolean }) {
         title={
           <>
             The Machines Behind the{" "}
-            <span className="italic text-burgundy">Print</span>
+            <span className="accent text-burgundy">Print</span>
           </>
         }
       />
@@ -34,7 +34,7 @@ export function Machinery({ showLabel = true }: { showLabel?: boolean }) {
           {/* Copy */}
           <div className="relative order-2 lg:order-1">
             <p className="eyebrow text-brass-deep">Featured — Plate 01</p>
-            <h3 className="mt-5 font-serif text-[clamp(1.75rem,3.2vw,2.5rem)] leading-tight text-coffee">
+            <h3 className="mt-5 font-display text-[clamp(1.75rem,3.2vw,2.5rem)] leading-tight text-coffee">
               Heidelberg Four Colour Printing Machine
             </h3>
             <div className="mt-6 h-px w-16 bg-burgundy" aria-hidden="true" />
@@ -45,12 +45,12 @@ export function Machinery({ showLabel = true }: { showLabel?: boolean }) {
             <div className="mt-8 flex flex-wrap items-center gap-6">
               <div>
                 <p className="eyebrow text-ink/65">Origin</p>
-                <p className="mt-1.5 font-serif text-xl text-coffee">Germany</p>
+                <p className="mt-1.5 font-display text-xl text-coffee">Germany</p>
               </div>
               <div className="h-10 w-px bg-ink/15" aria-hidden="true" />
               <div>
                 <p className="eyebrow text-ink/65">Process</p>
-                <p className="mt-1.5 font-serif text-xl text-coffee">
+                <p className="mt-1.5 font-display text-xl text-coffee">
                   CMYK Offset
                 </p>
               </div>
@@ -121,7 +121,7 @@ export function Machinery({ showLabel = true }: { showLabel?: boolean }) {
               )}
 
               <div>
-                <h4 className="font-serif text-[1.25rem] leading-snug text-coffee sm:text-[1.5rem]">
+                <h4 className="font-display text-[1.25rem] leading-snug text-coffee sm:text-[1.5rem]">
                   {machine.name}
                 </h4>
                 <p className="mt-1.5 text-[0.9375rem] text-ink/65">{machine.note}</p>
@@ -129,7 +129,7 @@ export function Machinery({ showLabel = true }: { showLabel?: boolean }) {
 
               <span className="shrink-0 text-right">
                 <span className="eyebrow block text-ink/65">Qty.</span>
-                <span className="mt-0.5 block font-serif text-2xl text-burgundy sm:text-3xl">
+                <span className="mt-0.5 block font-stencil text-2xl text-burgundy sm:text-3xl">
                   {machine.quantity}
                 </span>
               </span>

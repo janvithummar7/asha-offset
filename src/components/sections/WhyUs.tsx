@@ -21,7 +21,7 @@ export function WhyUs({
             title={
               <>
                 Why Businesses Choose{" "}
-                <span className="italic text-burgundy">Asha Offset</span>
+                <span className="accent text-burgundy">Asha Offset</span>
               </>
             }
           />
@@ -32,7 +32,7 @@ export function WhyUs({
                 size={22}
                 className="absolute -left-[12px] -top-7 bg-paper text-brass"
               />
-              <p className="font-serif text-[clamp(1.5rem,2.8vw,2.125rem)] italic leading-snug text-coffee">
+              <p className="font-display text-[clamp(1.5rem,2.8vw,2.125rem)] leading-snug text-coffee">
                 &ldquo;{statement}&rdquo;
               </p>
             </blockquote>
@@ -52,7 +52,7 @@ export function WhyUs({
                 {reason.index}
               </span>
               <div>
-                <h3 className="font-serif text-[1.375rem] leading-snug text-coffee transition-transform duration-400 group-hover:translate-x-1 sm:text-[1.75rem]">
+                <h3 className="font-display text-[1.375rem] leading-snug text-coffee transition-transform duration-400 group-hover:translate-x-1 sm:text-[1.75rem]">
                   {reason.title}
                 </h3>
                 <p className="measure mt-3 leading-relaxed text-ink/65">

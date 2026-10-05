@@ -23,7 +23,7 @@ export function QualitySheet({
         title={
           <>
             Quality Is Part of the{" "}
-            <span className="italic text-burgundy">Process.</span>
+            <span className="accent text-burgundy">Process.</span>
           </>
         }
         lede="Every order passes through defined quality checks to ensure consistent printing, finishing and dispatch standards."
@@ -54,15 +54,15 @@ export function QualitySheet({
                 key={step.index}
                 as="li"
                 delay={i * 110}
-                className="group grid gap-4 border-b border-ink/12 px-6 py-7 transition-colors duration-400 last:border-0 hover:bg-cream/70 sm:grid-cols-[auto_1fr_auto] sm:items-start sm:gap-8 sm:px-9 sm:py-8"
+                className="group grid gap-4 border-b border-ink/12 px-6 py-7 transition-colors duration-400 last:border-0 hover:bg-cream/70 sm:grid-cols-[3.5rem_1fr_auto] sm:items-start sm:gap-8 sm:px-9 sm:py-8"
               >
                 {/* Stage number */}
-                <span className="font-serif text-3xl leading-none text-burgundy sm:text-4xl">
+                <span className="font-stencil text-3xl leading-none text-burgundy sm:text-4xl">
                   {step.index}
                 </span>
 
                 <div>
-                  <h3 className="font-serif text-[1.375rem] text-coffee sm:text-[1.625rem]">
+                  <h3 className="font-display text-[1.375rem] text-coffee sm:text-[1.625rem]">
                     {step.title}
                   </h3>
                   <p className="measure mt-3 leading-relaxed text-ink/65">

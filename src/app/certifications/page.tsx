@@ -28,7 +28,7 @@ export default function CertificationsPage() {
           <>
             Open a vendor account
             <br />
-            with <span className="italic text-brass">confidence.</span>
+            with <span className="accent text-brass">confidence.</span>
           </>
         }
         lede="Everything a procurement team needs to open a vendor account — and nothing that belongs in a private file."

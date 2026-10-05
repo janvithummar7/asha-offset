@@ -221,7 +221,7 @@ export function Nav() {
                 <Link
                   href={link.href}
                   aria-current={isActive(link) ? "page" : undefined}
-                  className={`block border px-3.5 py-2.5 text-left text-[0.9375rem] font-medium focus-visible:outline-burgundy transition-colors ${
+                  className={`block border px-3.5 py-2.5 text-left text-[0.9375rem] font-semibold focus-visible:outline-burgundy transition-colors ${
                     isActive(link)
                       ? "border-burgundy bg-burgundy/8 text-burgundy"
                       : "border-ink/12 text-ink hover:border-ink/35 hover:bg-cream"

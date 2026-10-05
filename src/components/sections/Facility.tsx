@@ -97,7 +97,7 @@ export function Facility() {
         title={
           <>
             Inside Our Production{" "}
-            <span className="italic text-burgundy">Facility</span>
+            <span className="accent text-burgundy">Facility</span>
           </>
         }
         lede="Four stages carry every order from blank stock to packed dispatch."

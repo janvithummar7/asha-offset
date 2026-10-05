@@ -52,15 +52,20 @@
   --color-plate-k: #0d1b2e;
 
   /* Type ----------------------------------------------------------- */
-  --font-serif: var(--font-playfair), "Playfair Display", "Times New Roman",
-    serif;
-  --font-sans: var(--font-inter), "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-big-shoulders), "Big Shoulders Display",
+    "Arial Narrow", Impact, sans-serif;
+  --font-stencil: var(--font-big-shoulders-stencil),
+    "Big Shoulders Stencil Display", "Arial Narrow", Impact, sans-serif;
+  --font-sans: var(--font-hind-vadodara), "Hind Vadodara", system-ui,
+    -apple-system, sans-serif;
   --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
 
   /* Editorial display sizes --------------------------------------- */
-  --text-display: clamp(2.75rem, 8vw, 6.5rem);
-  --text-headline: clamp(2.125rem, 5vw, 4rem);
-  --text-title: clamp(1.75rem, 3.4vw, 2.75rem);
+  /* Condensed type needs more size than a wide serif to carry the same
+     weight on the page. */
+  --text-display: clamp(3.25rem, 9vw, 7.5rem);
+  --text-headline: clamp(2.75rem, 6.2vw, 5rem);
+  --text-title: clamp(2.25rem, 4.2vw, 3.5rem);
 
   /* Motion --------------------------------------------------------- */
   --ease-paper: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -86,20 +91,41 @@
     background-color: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-synthesis-weight: none;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    /* None of the type has italics, so never fake them (or a bold). */
+    font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 
-  /* Serif headings get tight, editorial tracking. */
+  /* Headings: tall, condensed, heavy — the lettering of factory signs. */
   h1,
   h2,
   h3 {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    letter-spacing: -0.015em;
-    line-height: 1.04;
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: 0.005em;
+    line-height: 0.98;
+  }
+
+  /* Display and stencil type are pinned to the font's large optical size,
+     the "Display" cut the Asha identity is built on, at every size. */
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display,
+  .font-stencil {
+    font-variation-settings: "opsz" 72;
+  }
+
+  /* Display type outside a heading (card titles, numbers) is one weight
+     lighter than the h1–h3 default. */
+  .font-display,
+  .font-stencil {
+    font-weight: 700;
   }
 
   ::selection {
@@ -569,7 +595,8 @@
   inset: 0;
   display: flex;
   align-items: center;
-  padding: 0 max(24px, 6vw);
+  /* The top padding keeps the centred block clear of the fixed header. */
+  padding: 6.5rem max(24px, 6vw) 2rem;
   pointer-events: none;
 }
 .hero-settle::before {
@@ -586,7 +613,7 @@
 }
 .hero-settle-in {
   position: relative;
-  max-width: min(640px, 48vw);
+  max-width: min(720px, 52vw);
   color: #fbfaf7;
   text-shadow:
     0 1px 2px rgb(6 14 26 / 0.95),
@@ -600,7 +627,7 @@
 }
 .hero-settle h1 {
   margin: 0.25em 0 0.2em;
-  font-size: clamp(3rem, 7.4vw, 6.5rem);
+  font-size: clamp(3.5rem, 7.4vw, 7rem);
   line-height: 0.98;
   color: inherit;
 }
@@ -746,10 +773,12 @@
 }
 .hero-band-title {
   margin-bottom: 0.875rem;
-  font-family: var(--font-serif);
-  font-size: clamp(2.25rem, 4.2vw, 4rem);
-  line-height: 1.02;
-  letter-spacing: -0.015em;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: "opsz" 72;
+  font-size: clamp(2.75rem, 5.4vw, 5.25rem);
+  line-height: 0.98;
+  letter-spacing: 0.005em;
 }
 .hero-band-title .w {
   --kc: clamp(0, (var(--k) - var(--th, 0)) * 2.6, 1);
@@ -1003,13 +1032,13 @@
 [data-js="on"] [data-reveal][data-kind="draw"] > span > span:nth-child(4) { transition-delay: 0.36s; }
 
 /* Accent words in headings get an underline that sweeps in. */
-[data-reveal] h1 .italic,
-[data-reveal] h2 .italic {
+[data-reveal] h1 .accent,
+[data-reveal] h2 .accent {
   background: linear-gradient(currentColor, currentColor) no-repeat 0 94% / 0% 2px;
   transition: background-size 1s var(--ease-paper) 0.5s;
 }
-[data-reveal="in"] h1 .italic,
-[data-reveal="in"] h2 .italic {
+[data-reveal="in"] h1 .accent,
+[data-reveal="in"] h2 .accent {
   background-size: 100% 2px;
 }
 
@@ -1086,8 +1115,8 @@
     filter: none;
   }
   [data-js="on"] [data-reveal][data-kind="draw"] > span > span { transform: none; }
-  [data-reveal] h1 .italic,
-  [data-reveal] h2 .italic { background-size: 100% 2px; }
+  [data-reveal] h1 .accent,
+  [data-reveal] h2 .accent { background-size: 100% 2px; }
 }
 
 @keyframes bar-in {

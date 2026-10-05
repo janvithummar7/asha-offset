@@ -163,6 +163,7 @@ export function Credentials({ showLabel = true }: { showLabel?: boolean }) {
             <img
               src={active.src}
               alt={active.label}
+              decoding="async"
               className="h-auto w-full"
             />
             <figcaption className="eyebrow mt-4 text-ink/65">

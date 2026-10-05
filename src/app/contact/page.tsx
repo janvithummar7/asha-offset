@@ -141,7 +141,7 @@ export default function ContactPage() {
             </p>
             <div className="mt-8">
               <Action href={MAP_LINK} variant="outline" external>
-                Open in Google Maps
+                Get Directions
               </Action>
             </div>
           </Reveal>

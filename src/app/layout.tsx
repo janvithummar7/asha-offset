@@ -87,7 +87,7 @@ const siteSchema = {
       name: company.name,
       legalName: company.name,
       url: SITE_URL,
-      logo: `${SITE_URL}/opengraph-image.png`,
+      logo: `${SITE_URL}/images/logo-original.png`,
       image: `${SITE_URL}/images/press-floor.jpg`,
       description:
         "Printing and packaging company in Gondal, Gujarat. Manufacturer of industrial labels, stickers, duplex boxes and mono cartons, and a provider of commercial offset printing since 1998.",
@@ -175,7 +175,7 @@ export default function RootLayout({
           href="#main"
           className="eyebrow sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:bg-ink focus:px-5 focus:py-3 focus:text-paper"
         >
-          Skip to content
+          Skip to main content
         </a>
 
         <Nav />

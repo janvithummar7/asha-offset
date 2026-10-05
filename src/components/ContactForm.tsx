@@ -35,7 +35,7 @@ const EMPTY: Fields = {
 };
 
 const FIELD_CLASS =
-  "w-full border border-ink/20 bg-paper px-4 py-3.5 text-ink transition-colors duration-300 placeholder:text-ink/65 focus:border-burgundy focus:outline-none";
+  "w-full border border-ink/20 bg-paper px-4 py-3.5 text-ink transition-colors duration-300 placeholder:text-ink/65 focus:border-burgundy focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-burgundy";
 
 export function ContactForm() {
   const [values, setValues] = useState<Fields>(EMPTY);
@@ -43,6 +43,7 @@ export function ContactForm() {
     {},
   );
   const [sent, setSent] = useState(false);
+  const [summary, setSummary] = useState("");
 
   const set = (key: keyof Fields) => (value: string) => {
     setValues((v) => ({ ...v, [key]: value }));
@@ -51,23 +52,44 @@ export function ContactForm() {
 
   const validate = () => {
     const next: Partial<Record<keyof Fields, string>> = {};
-    if (!values.name.trim()) next.name = "Please tell us your name.";
+    if (!values.name.trim())
+      next.name =
+        "Name is missing. Please type your name so we know who to reply to.";
     if (!values.message.trim())
-      next.message = "Please describe what you need printed.";
+      next.message =
+        "Message is missing. Please describe what you need printed — size, quantity or material, whatever you know.";
 
     // One contact route is enough, but we need at least one.
     const hasEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim());
     const hasPhone = values.phone.replace(/\D/g, "").length >= 10;
 
     if (!values.email.trim() && !values.phone.trim()) {
-      next.email = "Add an email address or a phone number so we can reply.";
+      next.email =
+        "No contact details. Please add an email address or a phone number so we can reply.";
     } else if (values.email.trim() && !hasEmail) {
-      next.email = "That email address doesn't look right.";
-    } else if (!values.email.trim() && !hasPhone) {
-      next.phone = "That phone number looks too short.";
+      next.email =
+        "That email address isn't valid. Use the form name@example.com.";
+    }
+    if (values.phone.trim() && !hasPhone) {
+      next.phone =
+        "That phone number is too short. Enter at least 10 digits, for example 98765 43210.";
     }
 
     setErrors(next);
+    const count = Object.keys(next).length;
+    setSummary(
+      count
+        ? `Your enquiry was not sent. Please fix ${count} ${count === 1 ? "field" : "fields"} below.`
+        : "",
+    );
+    if (count) {
+      // Move focus to the first invalid field so keyboard and
+      // screen-reader users land on the problem.
+      const first = ["name", "phone", "email", "message"].find(
+        (k) => k in next,
+      );
+      requestAnimationFrame(() => document.getElementById(first!)?.focus());
+    }
     return Object.keys(next).length === 0;
   };
 
@@ -104,7 +126,10 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div className="relative border border-ink/20 bg-cream p-8 sm:p-10">
+      <div
+        role="status"
+        className="relative border border-ink/20 bg-cream p-8 sm:p-10"
+      >
         <CropMarks inset="0.6rem" />
         <p className="eyebrow text-brass-deep">Enquiry Composed</p>
         <h3 className="mt-5 font-serif text-2xl text-coffee sm:text-3xl">
@@ -150,6 +175,18 @@ export function ContactForm() {
       <CropMarks inset="0.6rem" />
 
       <p className="eyebrow text-brass-deep">Enquiry Form</p>
+
+      {/* Announced to assistive tech whenever validation fails. */}
+      <p
+        role="alert"
+        className={
+          summary
+            ? "mt-5 border-l-4 border-burgundy bg-paper px-4 py-3 text-burgundy"
+            : "sr-only"
+        }
+      >
+        {summary}
+      </p>
 
       <div className="mt-7 grid gap-5 sm:grid-cols-2">
         <Field

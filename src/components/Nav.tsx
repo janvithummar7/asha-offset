@@ -40,12 +40,22 @@ export function Nav() {
       }
     };
 
-    document.body.style.overflow = "hidden";
+    const onScroll = () => setOpen(false);
+    const onPointer = (e: PointerEvent) => {
+      const t = e.target as Element | null;
+      if (!t?.closest("#mobile-nav, [aria-controls='mobile-nav']")) {
+        setOpen(false);
+      }
+    };
+
     document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
-      document.body.style.overflow = "";
       document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+      window.removeEventListener("scroll", onScroll);
     };
   }, [open]);
 
@@ -69,7 +79,7 @@ export function Nav() {
       className={`no-print fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-500 ${
         scrolled
           ? "bg-paper/92 shadow-[0_1px_0_rgb(13_27_46/0.12),0_12px_30px_-24px_rgb(13_27_46/0.5)] backdrop-blur-sm"
-          : "bg-transparent"
+          : "on-ink bg-transparent [text-shadow:0_1px_2px_rgb(0_0_0/0.85),0_2px_14px_rgb(0_0_0/0.6)]"
       }`}
     >
       {/* Process-ink hairline across the very top of the sheet. */}
@@ -80,26 +90,26 @@ export function Nav() {
         <Link
           href="/"
           className={`group flex flex-col justify-center transition-all duration-500 ${
-            scrolled ? "py-4" : "py-5"
+            scrolled ? "py-3 sm:py-4" : "py-3 sm:py-5"
           }`}
         >
-          {/* Transparent logo. Over a dark ground a soft light halo keeps
-              the blue "Offset" lettering legible without a backing plate. */}
+          {/* Transparent logo. Over a dark ground the light-blue variant keeps
+              "Offset" legible without a backing plate. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo.png"
+            src={onDark ? "/logo-light.png" : "/logo.png"}
             alt="Asha Offset"
             width={704}
             height={162}
             className={`w-auto transition-all duration-500 ${
-              scrolled ? "h-8 sm:h-12" : "h-9 sm:h-14"
-            } ${onDark ? "logo-halo" : ""}`}
+              scrolled ? "h-8 sm:h-12" : "h-9 drop-shadow-[0_2px_8px_rgb(0_0_0/0.55)] sm:h-14"
+            }`}
           />
 
           <span
-            className={`eyebrow overflow-hidden transition-all duration-500 ${
+            className={`eyebrow hidden overflow-hidden transition-all duration-500 sm:block ${
               scrolled ? "mt-0 max-h-0 opacity-0" : "mt-1.5 max-h-5 opacity-100"
-            } ${onDark ? "text-paper/60" : "text-ink/65"}`}
+            } ${onDark ? "text-paper/85" : "text-ink/65"}`}
           >
             Printing Excellence Since {company.since}
           </span>
@@ -112,20 +122,20 @@ export function Nav() {
               key={link.href}
               href={link.href}
               aria-current={isActive(link) ? "page" : undefined}
-              className={`eyebrow relative py-2 transition-colors duration-300 ${
+              className={`eyebrow relative py-2 text-[0.8125rem] font-semibold transition-colors duration-300 ${
                 isActive(link)
                   ? onDark
-                    ? "text-brass"
+                    ? "text-brass-light"
                     : "text-burgundy"
                   : onDark
-                    ? "text-paper/70 hover:text-paper"
-                    : "text-ink/65 hover:text-ink"
+                    ? "text-paper hover:text-brass-light"
+                    : "text-ink/75 hover:text-ink"
               }`}
             >
               {link.label}
               {/* Brass underscore marks the current page. */}
               <span
-                className={`absolute inset-x-0 -bottom-0.5 h-px origin-left bg-brass transition-transform duration-300 ${
+                className={`absolute inset-x-0 -bottom-0.5 h-0.5 origin-left bg-brass transition-transform duration-300 ${
                   isActive(link) ? "scale-x-100" : "scale-x-0"
                 }`}
                 aria-hidden="true"
@@ -137,13 +147,19 @@ export function Nav() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className={`eyebrow hidden px-5 py-3 transition-colors duration-300 sm:inline-block ${
+            className={`eyebrow group hidden items-center gap-2.5 border px-5 py-3 font-semibold shadow-[0_10px_24px_-12px_rgb(183_28_40/0.9)] transition-all duration-300 hover:-translate-y-0.5 sm:inline-flex ${
               onDark
-                ? "border border-paper/35 text-paper hover:border-brass hover:bg-brass hover:text-ink"
-                : "border border-ink/25 text-ink hover:border-burgundy hover:bg-burgundy hover:text-paper"
+                ? "border-burgundy bg-burgundy text-paper hover:border-paper hover:bg-paper hover:text-burgundy"
+                : "border-burgundy bg-burgundy text-paper hover:border-coffee hover:bg-coffee"
             }`}
           >
             Request a Quote
+            <span
+              className="transition-transform duration-300 group-hover:translate-x-1"
+              aria-hidden="true"
+            >
+              →
+            </span>
           </Link>
 
           {/* Drawer toggle ------------------------------------------ */}
@@ -154,26 +170,31 @@ export function Nav() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-            className={`flex h-11 w-11 items-center justify-center border transition-colors lg:hidden ${
-              onDark
-                ? "border-paper/30 text-paper hover:border-paper/60"
-                : "border-ink/20 text-ink hover:border-ink/45"
+            className={`group flex h-11 w-11 items-center justify-center border-2 shadow-[0_10px_22px_-10px_rgb(183_28_40/0.85)] transition-all duration-300 active:scale-95 lg:hidden ${
+              open
+                ? "border-burgundy bg-paper text-burgundy"
+                : "border-paper/85 bg-burgundy text-paper hover:bg-paper hover:text-burgundy"
             }`}
           >
-            <span className="relative block h-3 w-5" aria-hidden="true">
+            {/* Three bars: the lower two are shorter and right-aligned until
+                hover, then every bar settles to full width. Open turns them
+                into a cross. */}
+            <span className="relative block h-3.5 w-5" aria-hidden="true">
               <span
-                className={`absolute left-0 block h-px w-5 bg-current transition-all duration-300 ${
-                  open ? "top-1.5 rotate-45" : "top-0"
+                className={`absolute right-0 block h-0.5 rounded-full bg-current transition-all duration-300 ${
+                  open ? "top-1.5 w-5 rotate-45" : "top-0 w-5"
                 }`}
               />
               <span
-                className={`absolute left-0 top-1.5 block h-px w-5 bg-current transition-opacity duration-300 ${
-                  open ? "opacity-0" : "opacity-100"
+                className={`absolute right-0 top-1.5 block h-0.5 rounded-full bg-current transition-all duration-300 ${
+                  open ? "w-5 opacity-0" : "w-3.5 opacity-100 group-hover:w-5"
                 }`}
               />
               <span
-                className={`absolute left-0 block h-px w-5 bg-current transition-all duration-300 ${
-                  open ? "top-1.5 -rotate-45" : "top-3"
+                className={`absolute right-0 block h-0.5 rounded-full bg-current transition-all duration-300 ${
+                  open
+                    ? "top-1.5 w-5 -rotate-45"
+                    : "top-3 w-2.5 group-hover:w-5"
                 }`}
               />
             </span>
@@ -187,34 +208,34 @@ export function Nav() {
       <div
         id="mobile-nav"
         inert={!open}
-        className={`overflow-hidden border-t border-ink/10 bg-paper transition-[max-height,opacity] duration-500 lg:hidden ${
-          open ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0"
+        className={`absolute right-3 top-full mt-2 w-56 origin-top-right overflow-y-auto [text-shadow:none] border border-ink/15 bg-paper text-ink shadow-[0_24px_50px_-20px_rgb(13_27_46/0.55)] transition-[opacity,transform] duration-300 sm:right-8 sm:w-64 lg:hidden ${
+          open
+            ? "max-h-[calc(100svh-6rem)] scale-100 opacity-100"
+            : "pointer-events-none max-h-0 scale-95 opacity-0"
         }`}
       >
-        <nav aria-label="Primary (mobile)" className="px-5 py-3 sm:px-8">
-          {navLinks.map((link, i) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              aria-current={isActive(link) ? "page" : undefined}
-              className="flex items-baseline gap-4 border-b border-ink/10 py-4 last:border-0"
-            >
-              <span className="eyebrow text-ink/65">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span
-                className={`font-serif text-2xl ${
-                  isActive(link) ? "text-burgundy" : "text-ink"
-                }`}
-              >
-                {link.label}
-              </span>
-            </Link>
-          ))}
+        <nav aria-label="Primary (mobile)" className="p-3">
+          <ul className="space-y-1.5">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  aria-current={isActive(link) ? "page" : undefined}
+                  className={`block border px-3.5 py-2.5 text-left text-[0.9375rem] font-medium focus-visible:outline-burgundy transition-colors ${
+                    isActive(link)
+                      ? "border-burgundy bg-burgundy/8 text-burgundy"
+                      : "border-ink/12 text-ink hover:border-ink/35 hover:bg-cream"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
           <Link
             href="/contact"
-            className="eyebrow mt-5 mb-2 block bg-burgundy px-5 py-4 text-center text-paper"
+            className="eyebrow mt-3 block bg-burgundy px-4 py-3 text-center font-semibold text-paper shadow-[0_10px_24px_-12px_rgb(183_28_40/0.9)] transition-colors hover:bg-coffee focus-visible:outline-burgundy"
           >
             Request a Quote
           </Link>

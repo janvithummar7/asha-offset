@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { company } from "@/lib/content";
+import { Reveal } from "./Reveal";
 import { SectionDivider } from "./SectionDivider";
 import { Action } from "./ui";
 
@@ -55,7 +56,7 @@ export function Footer() {
       <div className="relative mx-auto max-w-[88rem] px-5 pb-8 pt-16 sm:px-8 sm:pt-20">
         <div className="grid gap-14 lg:grid-cols-[1.15fr_1fr_1fr] lg:gap-12">
           {/* Brand ------------------------------------------------- */}
-          <div>
+          <Reveal variant="drop">
             <Link href="/" className="inline-block" aria-label="Asha Offset, home">
               {/* Light-blue variant of the logo, made for dark grounds. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -83,11 +84,11 @@ export function Footer() {
                 Request a printing quote
               </Action>
             </div>
-          </div>
+          </Reveal>
 
           {/* Explore ----------------------------------------------- */}
           <nav aria-label="Footer">
-            <div className="grid grid-cols-2 gap-8">
+            <Reveal variant="drop" delay={140} className="grid grid-cols-2 gap-8">
               {EXPLORE.map((group) => (
                 <div key={group.heading}>
                   <h2 className="eyebrow text-brass-light">{group.heading}</h2>
@@ -103,11 +104,11 @@ export function Footer() {
                   </ul>
                 </div>
               ))}
-            </div>
+            </Reveal>
           </nav>
 
           {/* Visit & contact --------------------------------------- */}
-          <div>
+          <Reveal variant="drop" delay={280}>
             <h2 className="eyebrow text-brass-light">Visit &amp; contact</h2>
             <address className="mt-5 space-y-5 not-italic">
               <p className="leading-relaxed text-paper/80">
@@ -152,7 +153,7 @@ export function Footer() {
                 </li>
               </ul>
             </address>
-          </div>
+          </Reveal>
         </div>
 
         {/* Colophon ------------------------------------------------- */}

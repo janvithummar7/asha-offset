@@ -16,7 +16,7 @@ export function ContactCta({
   return (
     <section className={`relative overflow-hidden ${tone === "stock" ? "stock" : "bg-paper"} px-5 py-20 text-ink sm:px-8 sm:py-28`}>
       <div
-        className="halftone pointer-events-none absolute inset-0 opacity-[0.07]"
+        className="halftone dot-drift pointer-events-none absolute inset-0 opacity-[0.07]"
         style={
           {
             "--dot-color": "var(--color-ink)",
@@ -52,7 +52,7 @@ export function ContactCta({
 
           <Reveal delay={240}>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Action href="/contact" variant="outline">
+              <Action href="/contact" variant="outline" className="btn-pulse">
                 Request a Quote
               </Action>
               <Action
@@ -68,7 +68,7 @@ export function ContactCta({
         </div>
 
         {/* Imprint block -------------------------------------------- */}
-        <Reveal delay={300}>
+        <Reveal variant="right" delay={300}>
           <address className="border-l border-ink/20 pl-7 not-italic">
             <p className="eyebrow text-brass-deep">Works</p>
             <p className="mt-4 leading-relaxed text-ink/70">

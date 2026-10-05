@@ -66,7 +66,7 @@ export function ProductShowcase({
             {/* Entries ----------------------------------------------- */}
             <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {group.items.map((item, i) => (
-                <Reveal key={item.name} delay={i * 100}>
+                <Reveal key={item.name} variant="drop" delay={i * 110}>
                   <article className="group relative h-full border border-ink/15 bg-cream transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:border-ink/30 hover:shadow-[0_28px_55px_-40px_rgb(13_27_46/0.6)]">
                     {/* Plate ------------------------------------------ */}
                     <div className="relative aspect-5/4 overflow-hidden border-b border-ink/12">

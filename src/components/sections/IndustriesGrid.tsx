@@ -84,7 +84,7 @@ export function IndustriesGrid({
 
       <div className="mt-14 grid gap-7 sm:grid-cols-2">
         {industries.map((industry, i) => (
-          <Reveal key={industry.name} delay={i * 110}>
+          <Reveal key={industry.name} variant="zoom" delay={i * 110}>
             <article className="group relative h-full overflow-hidden border border-ink/20 bg-cream p-8 transition-[transform,background-color,border-color] duration-500 hover:-translate-y-1 hover:border-ink/40 sm:p-10">
               <CropMarks inset="0.7rem" className="text-ink/50" />
 

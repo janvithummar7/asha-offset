@@ -31,7 +31,7 @@ export function Action({
   className?: string;
   external?: boolean;
 }) {
-  const classes = `eyebrow group inline-flex items-center justify-center gap-2.5 px-7 py-4 transition-all duration-300 ${VARIANTS[variant]} ${className}`;
+  const classes = `eyebrow btn-sheen group inline-flex items-center justify-center gap-2.5 px-7 py-4 transition-all duration-300 hover:-translate-y-0.5 ${VARIANTS[variant]} ${className}`;
 
   const content = (
     <>

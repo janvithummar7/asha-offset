@@ -121,7 +121,7 @@ export function PageHeader({
     <header className="relative overflow-hidden bg-ink px-5 pb-20 pt-36 text-paper sm:px-8 sm:pb-28 sm:pt-44 on-ink">
       {/* Halftone field falling away from the top edge. */}
       <div
-        className="halftone-fade pointer-events-none absolute inset-0 opacity-[0.1]"
+        className="halftone-fade dot-drift pointer-events-none absolute inset-0 opacity-[0.1]"
         style={
           {
             "--dot-color": "var(--color-paper)",
@@ -138,7 +138,7 @@ export function PageHeader({
           </SectionLabel>
         </Reveal>
 
-        <Reveal delay={90}>
+        <Reveal variant="blur" delay={90}>
           <h1 className="mt-7 max-w-5xl text-[length:var(--text-headline)] text-balance">
             {title}
           </h1>

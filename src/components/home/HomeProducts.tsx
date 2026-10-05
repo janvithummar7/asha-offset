@@ -26,13 +26,13 @@ export function HomeProducts() {
 
       <div className="mt-14 grid gap-6 md:grid-cols-3">
         {productGroups.map((group, i) => (
-          <Reveal key={group.slug} delay={i * 100}>
+          <Reveal key={group.slug} variant="drop" delay={i * 140}>
             <Link
               href="/products"
               className="group relative block h-full border border-ink/15 bg-cream transition-[transform,border-color] duration-500 hover:-translate-y-1.5 hover:border-ink/30"
             >
               <div className="relative aspect-5/4 overflow-hidden border-b border-ink/12">
-                <div className="h-full w-full transition-transform duration-[1.2s] ease-[var(--ease-paper)] group-hover:scale-[1.06]">
+                <div className="float-on-hover h-full w-full transition-transform duration-[1.2s] ease-[var(--ease-paper)] group-hover:scale-[1.06]">
                   <ProductArt art={group.items[0].art} />
                 </div>
                 <div
@@ -62,7 +62,7 @@ export function HomeProducts() {
         ))}
       </div>
 
-      <Reveal delay={120}>
+      <Reveal variant="blur" delay={200}>
         <div className="mt-12">
           <Action href="/products">View the full portfolio</Action>
         </div>

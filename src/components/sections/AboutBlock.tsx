@@ -30,7 +30,7 @@ export function AboutBlock({
                   alt="The Asha Offset premises on Gundala Road, Gondal, with the original Gujarati signage above the entrance"
                   fill
                   sizes="(max-width: 1024px) 92vw, 40vw"
-                  className="duotone object-cover transition-transform duration-[1.4s] ease-[var(--ease-paper)] hover:scale-[1.04]"
+                  className="duotone kenburns object-cover"
                 />
                 <div
                   className="halftone pointer-events-none absolute inset-0 opacity-[0.16] mix-blend-multiply"
@@ -74,7 +74,7 @@ export function AboutBlock({
 
           <div className="mt-8 space-y-5">
             {aboutParagraphs.map((text, i) => (
-              <Reveal key={i} delay={200 + i * 80}>
+              <Reveal key={i} variant="right" delay={200 + i * 120}>
                 <p className="measure text-[1.0625rem] leading-relaxed text-ink/75">
                   {text}
                 </p>
@@ -83,7 +83,7 @@ export function AboutBlock({
           </div>
 
           {/* Company information card. */}
-          <Reveal delay={420}>
+          <Reveal variant="drop" delay={420}>
             <div className="relative mt-11 border border-ink/15 bg-paper p-6 sm:p-8">
               <CropMarks inset="0.55rem" />
               <h3 className="eyebrow text-brass-deep">Company Information</h3>
@@ -101,7 +101,7 @@ export function AboutBlock({
           </Reveal>
 
           {withCta && (
-            <Reveal delay={500}>
+            <Reveal variant="blur" delay={500}>
               <div className="mt-10">
                 <Action href="/about" variant="outline">
                   Read Our Story

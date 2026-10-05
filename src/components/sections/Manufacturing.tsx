@@ -89,7 +89,7 @@ export function Manufacturing({
 
           <div className="mt-12 space-y-8">
             {FIGURES.map((figure, i) => (
-              <Reveal key={figure.index} delay={200 + i * 120}>
+              <Reveal key={figure.index} variant="right" delay={200 + i * 140}>
                 <div className="rule-tick grid gap-3 pt-6 sm:grid-cols-[auto_1fr] sm:gap-7">
                   <p className="eyebrow pt-2 text-paper/60">{figure.index}</p>
                   <div>

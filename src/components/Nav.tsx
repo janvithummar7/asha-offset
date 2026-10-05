@@ -76,7 +76,7 @@ export function Nav() {
 
   return (
     <header
-      className={`no-print fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-500 ${
+      className={`no-print nav-in fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-500 ${
         scrolled
           ? "bg-paper/92 shadow-[0_1px_0_rgb(13_27_46/0.12),0_12px_30px_-24px_rgb(13_27_46/0.5)] backdrop-blur-sm"
           : "on-ink bg-transparent [text-shadow:0_1px_2px_rgb(0_0_0/0.85),0_2px_14px_rgb(0_0_0/0.6)]"

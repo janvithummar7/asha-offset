@@ -31,7 +31,8 @@ export function StatStrip() {
         {stats.map((stat, i) => (
           <Reveal
             key={stat.label}
-            delay={i * 110}
+            variant="zoom"
+            delay={i * 140}
             className="bg-ink px-5 py-10 sm:px-8 sm:py-14"
           >
             <dt className="sr-only">{stat.label}</dt>

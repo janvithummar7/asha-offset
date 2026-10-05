@@ -26,10 +26,10 @@ export function HomeIndustries() {
       <ul className="mt-12 grid grid-cols-2 gap-px border border-ink/15 bg-ink/12 lg:grid-cols-4">
         {industries.map((industry, i) => (
           <li key={industry.name} className="bg-paper">
-            <Reveal delay={i * 90} className="h-full">
+            <Reveal variant="zoom" delay={i * 110} className="h-full">
               <Link
                 href="/industries"
-                className="group block h-full px-6 py-8 transition-colors duration-300 hover:bg-cream sm:px-8"
+                className="group block h-full bg-[linear-gradient(var(--color-cream),var(--color-cream))] bg-[length:100%_0%] bg-bottom bg-no-repeat px-6 py-8 transition-[background-size] duration-500 hover:bg-[length:100%_100%] sm:px-8"
               >
                 <span className="eyebrow text-ink/65">{industry.index}</span>
                 <span className="mt-4 block font-serif text-[1.375rem] text-coffee sm:text-2xl">
@@ -45,7 +45,7 @@ export function HomeIndustries() {
         ))}
       </ul>
 
-      <Reveal delay={150}>
+      <Reveal variant="blur" delay={250}>
         <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
           <Action href="/industries">See industries we serve</Action>
           <Link

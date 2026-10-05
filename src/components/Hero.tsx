@@ -480,7 +480,7 @@ export function Hero() {
               own presses in Gondal for businesses across Gujarat.
             </p>
             <div className="hero-row">
-              <Action href="/contact" variant="outline-light">
+              <Action href="/contact" variant="outline-light" className="btn-pulse">
                 Request a printing quote
               </Action>
               <Action href="/manufacturing" variant="outline-light">

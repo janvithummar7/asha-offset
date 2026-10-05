@@ -16,7 +16,7 @@ export function MobileCta() {
   if (pathname.startsWith("/contact")) return null;
 
   return (
-    <div className="no-print fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-ink/15 bg-paper/95 backdrop-blur-sm sm:hidden">
+    <div className="no-print bar-in fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-ink/15 bg-paper/95 backdrop-blur-sm sm:hidden">
       <a
         href={company.phoneHref}
         className="eyebrow flex items-center justify-center gap-2 py-4 text-ink"

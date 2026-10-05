@@ -19,8 +19,13 @@ export function Reveal({
   as?: ElementType;
   /** Stagger, in milliseconds. */
   delay?: number;
-  /** "fade" lifts the block; "image" wipes it open like a paper shutter. */
-  variant?: "fade" | "image";
+  /**
+   * "fade" lifts the block; "image" wipes it open like a paper shutter;
+   * "left" / "right" slide it in from a side; "zoom" scales it up; "drop"
+   * tips it forward like a sheet landing; "blur" sharpens it into focus;
+   * "draw" grows a colour bar out from the left.
+   */
+  variant?: "fade" | "image" | "left" | "right" | "zoom" | "drop" | "blur" | "draw";
   className?: string;
 }) {
   const ref = useRef<HTMLElement>(null);
@@ -65,6 +70,7 @@ export function Reveal({
       ref={ref}
       className={className}
       style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}
+      data-kind={variant === "fade" || variant === "image" ? undefined : variant}
       {...{ [attr]: "out" }}
     >
       {children}

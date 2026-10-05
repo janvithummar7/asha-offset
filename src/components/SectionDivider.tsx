@@ -1,4 +1,5 @@
 import { ColourBar } from "./print";
+import { Reveal } from "./Reveal";
 
 /**
  * The four-ink colour bar (cyan · magenta · yellow · key) used as the rule
@@ -18,7 +19,10 @@ export function SectionDivider({
   const position =
     placement === "top" ? "absolute inset-x-0 top-0 z-10" : "relative";
 
+  // The bar draws itself, one ink after another, as it scrolls into view.
   return (
-    <ColourBar className={`${position} h-[3px] w-full ${className}`} />
+    <Reveal variant="draw" className={position}>
+      <ColourBar className={`h-[3px] w-full ${className}`} />
+    </Reveal>
   );
 }

@@ -849,3 +849,143 @@
   filter: drop-shadow(0 0 1px rgb(255 255 255 / 0.95))
     drop-shadow(0 0 5px rgb(255 255 255 / 0.35));
 }
+
+/* ================================================================== */
+/*  Motion kit                                                         */
+/*  Reveal variants, continuous accents and hover effects. Everything  */
+/*  here is switched off under prefers-reduced-motion at the bottom.   */
+/* ================================================================== */
+
+/* Reveal variants — same trigger as [data-reveal], different entrance. */
+[data-js="on"] [data-reveal][data-kind="left"] { transform: translateX(-64px); }
+[data-js="on"] [data-reveal][data-kind="right"] { transform: translateX(64px); }
+[data-js="on"] [data-reveal][data-kind="zoom"] { transform: scale(0.88); }
+[data-js="on"] [data-reveal][data-kind="blur"] {
+  transform: translateY(12px) scale(1.03);
+  filter: blur(12px);
+  transition:
+    opacity 0.9s var(--ease-paper),
+    transform 0.9s var(--ease-paper),
+    filter 0.9s var(--ease-paper);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-js="on"] [data-reveal][data-kind="drop"] {
+  transform: perspective(900px) translateY(36px) rotateX(-14deg);
+  transform-origin: 50% 100%;
+}
+/* Settled state for every variant. It must outrank the variants' own
+   starting poses above (four attribute selectors against three), or the
+   element would stay frozen in mid-entrance. */
+[data-js="on"] [data-reveal][data-kind][data-reveal="in"] {
+  transform: none;
+  filter: none;
+}
+
+/* Colour bar that draws itself, one ink after another. */
+[data-js="on"] [data-reveal][data-kind="draw"] { opacity: 1; transform: none; }
+[data-js="on"] [data-reveal][data-kind="draw"] > span > span {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s var(--ease-paper);
+}
+[data-js="on"] [data-reveal][data-kind="draw"][data-reveal="in"] > span > span {
+  transform: scaleX(1);
+}
+[data-js="on"] [data-reveal][data-kind="draw"] > span > span:nth-child(2) { transition-delay: 0.12s; }
+[data-js="on"] [data-reveal][data-kind="draw"] > span > span:nth-child(3) { transition-delay: 0.24s; }
+[data-js="on"] [data-reveal][data-kind="draw"] > span > span:nth-child(4) { transition-delay: 0.36s; }
+
+/* Accent words in headings get an underline that sweeps in. */
+[data-reveal] h1 .italic,
+[data-reveal] h2 .italic {
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 94% / 0% 2px;
+  transition: background-size 1s var(--ease-paper) 0.5s;
+}
+[data-reveal="in"] h1 .italic,
+[data-reveal="in"] h2 .italic {
+  background-size: 100% 2px;
+}
+
+/* Header drops in on first paint. */
+@keyframes nav-in {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+.nav-in { animation: nav-in 0.8s var(--ease-paper) both; }
+
+/* Slow photograph zoom, like a camera creeping in. */
+@keyframes kenburns {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to { transform: scale(1.09) translate3d(-1.2%, -1.2%, 0); }
+}
+.kenburns { animation: kenburns 22s ease-in-out infinite alternate; }
+
+/* Halftone dots drifting sideways, like a plate registering. */
+@keyframes dot-drift {
+  from { background-position: 0 0; }
+  to { background-position: 72px 36px; }
+}
+.dot-drift { animation: dot-drift 26s linear infinite; }
+
+/* Gentle bob for illustrations when their card is hovered. */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-1.2deg); }
+}
+.group:hover .float-on-hover { animation: float-y 2.4s ease-in-out infinite; }
+
+/* Expanding ring that calls attention to a primary button. */
+@keyframes ring-pulse {
+  0% { box-shadow: 0 0 0 0 rgb(183 28 40 / 0.55); }
+  70% { box-shadow: 0 0 0 14px rgb(183 28 40 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(183 28 40 / 0); }
+}
+.btn-pulse { animation: ring-pulse 2.6s ease-out infinite; }
+
+/* Light sweeping across a button on hover. */
+.btn-sheen { position: relative; overflow: hidden; isolation: isolate; }
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 -60%;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgb(255 255 255 / 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s var(--ease-paper);
+  pointer-events: none;
+  z-index: -1;
+}
+.btn-sheen:hover::after { left: 130%; }
+
+/* Page scroll progress, drawn under the masthead. */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 3px;
+  transform-origin: left;
+  transform: scaleX(var(--p, 0));
+  background: linear-gradient(90deg, var(--color-plate-c), var(--color-plate-m), var(--color-plate-y));
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-in, .kenburns, .dot-drift, .btn-pulse,
+  .group:hover .float-on-hover { animation: none; }
+  .btn-sheen::after { display: none; }
+  .scroll-progress { display: none; }
+  [data-js="on"] [data-reveal][data-kind] {
+    transform: none;
+    filter: none;
+  }
+  [data-js="on"] [data-reveal][data-kind="draw"] > span > span { transform: none; }
+  [data-reveal] h1 .italic,
+  [data-reveal] h2 .italic { background-size: 100% 2px; }
+}
+
+@keyframes bar-in {
+  from { transform: translateY(100%); }
+  to { transform: none; }
+}
+.bar-in { animation: bar-in 0.7s var(--ease-paper) 0.6s both; }
+@media (prefers-reduced-motion: reduce) { .bar-in { animation: none; } }

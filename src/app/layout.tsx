@@ -3,6 +3,7 @@ import { Playfair_Display, Inter, IBM_Plex_Mono } from "next/font/google";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { MobileCta } from "@/components/MobileCta";
+import { ScrollProgress } from "@/components/ScrollProgress";
 import { company, productGroups } from "@/lib/content";
 import { SITE_URL, OG_IMAGE } from "@/lib/seo";
 import "./globals.css";
@@ -180,6 +181,7 @@ export default function RootLayout({
           Skip to main content
         </a>
 
+        <ScrollProgress />
         <Nav />
         <main id="main">{children}</main>
         <Footer />

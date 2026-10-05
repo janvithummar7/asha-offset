@@ -29,13 +29,13 @@ const testimonials: Testimonial[] = [];
 
 const clientLogos: { src: string; name: string }[] = [];
 
-export function Testimonials() {
+export function Testimonials({ index = "10" }: { index?: string }) {
   const hasReal = testimonials.length > 0;
 
   return (
     <Section id="clients" tone="stock">
       <SectionHead
-        index="10"
+        index={index}
         label="Clients"
         title={
           <>

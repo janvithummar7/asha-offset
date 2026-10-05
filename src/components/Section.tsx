@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
 import { SectionLabel } from "./print";
+import { SectionDivider } from "./SectionDivider";
 
 /**
  * Standard editorial band. Keeps the rhythm of the page consistent and
@@ -11,11 +12,14 @@ export function Section({
   className = "",
   tone = "paper",
   id,
+  divider = true,
 }: {
   children: ReactNode;
   className?: string;
   tone?: "paper" | "stock" | "ink";
   id?: string;
+  /** The colour-bar rule across the top edge. On by default. */
+  divider?: boolean;
 }) {
   const tones = {
     paper: "bg-paper text-ink",
@@ -28,6 +32,7 @@ export function Section({
       id={id}
       className={`relative overflow-hidden px-5 py-20 sm:px-8 sm:py-28 ${tones[tone]} ${className}`}
     >
+      {divider && <SectionDivider />}
       <div className="mx-auto max-w-[88rem]">{children}</div>
     </section>
   );

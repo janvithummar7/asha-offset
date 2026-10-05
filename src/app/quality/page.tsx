@@ -32,7 +32,7 @@ export default function QualityPage() {
       />
       <QualitySheet showLabel={false} />
       <WhyUs />
-      <ContactCta />
+      <ContactCta tone="stock" />
     </>
   );
 }

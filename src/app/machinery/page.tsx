@@ -18,7 +18,7 @@ export default function MachineryPage() {
       />
 
       <PageHeader
-        index="05"
+        index="06"
         label="Machinery"
         title={
           <>

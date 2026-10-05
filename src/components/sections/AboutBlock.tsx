@@ -8,8 +8,11 @@ import { Action, FactRow } from "../ui";
 export function AboutBlock({
   withCta = false,
   showLabel = true,
+  index = "01",
 }: {
   withCta?: boolean;
+  /** Running-head number; pages override it so the sequence has no gaps. */
+  index?: string;
   /** Hidden when the page header already carries this running head. */
   showLabel?: boolean;
 }) {
@@ -58,7 +61,7 @@ export function AboutBlock({
         <div className="order-1 lg:order-2">
           <SectionHead
             showLabel={showLabel}
-            index="01"
+            index={index}
             label="About"
             title={
               <>

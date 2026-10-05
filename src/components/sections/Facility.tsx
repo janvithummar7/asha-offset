@@ -92,7 +92,7 @@ export function Facility() {
   return (
     <Section id="facility" tone="paper">
       <SectionHead
-        index="06"
+        index="05"
         label="Facility"
         title={
           <>

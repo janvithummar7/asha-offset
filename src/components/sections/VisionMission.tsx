@@ -8,11 +8,11 @@ const CARDS = [
   { index: "II", title: "Our Mission", body: mission },
 ];
 
-export function VisionMission() {
+export function VisionMission({ index = "02" }: { index?: string }) {
   return (
     <Section tone="paper">
       <SectionHead
-        index="02"
+        index={index}
         label="Principles"
         title={
           <>
@@ -25,7 +25,7 @@ export function VisionMission() {
       <div className="mt-14 grid gap-7 md:grid-cols-2">
         {CARDS.map((card, i) => (
           <Reveal key={card.title} delay={i * 130}>
-            <article className="group relative h-full overflow-hidden border border-ink/15 bg-cream p-8 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_26px_50px_-40px_rgb(25_24_23/0.6)] sm:p-11">
+            <article className="group relative h-full overflow-hidden border border-ink/15 bg-cream p-8 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_26px_50px_-40px_rgb(13_27_46/0.6)] sm:p-11">
               <CropMarks inset="0.7rem" />
 
               {/* Aged-paper wash in the corner. */}

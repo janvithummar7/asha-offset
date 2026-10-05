@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import path from "node:path";
 
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ['192.168.29.205'],
   // The repository root sits above this folder, and an unrelated
   // package-lock.json lives higher up the tree — pin the workspace root
   // so Turbopack resolves against this project only.

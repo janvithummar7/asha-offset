@@ -3,14 +3,20 @@ import { Reveal } from "../Reveal";
 import { Section, SectionHead } from "../Section";
 import { RegistrationMark } from "../print";
 
-export function WhyUs() {
+export function WhyUs({
+  index = "09",
+  tone = "paper",
+}: {
+  index?: string;
+  tone?: "paper" | "stock";
+}) {
   return (
-    <Section id="why" tone="paper">
+    <Section id="why" tone={tone}>
       <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         {/* Heading + pull quote ------------------------------------ */}
         <div className="lg:sticky lg:top-32 lg:self-start">
           <SectionHead
-            index="09"
+            index={index}
             label="Why Us"
             title={
               <>

@@ -35,6 +35,8 @@ export default function IndustriesPage() {
       <IndustriesGrid showLabel={false} />
       <ProductShowcase
         heading
+        index="08"
+        tone="stock"
         limitTo={["labels-stickers"]}
         ctaHref="/products"
         ctaLabel="View the Full Portfolio"

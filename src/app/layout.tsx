@@ -69,7 +69,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f4efe5",
+  themeColor: "#fbf9f4",
   colorScheme: "light",
 };
 
@@ -157,6 +157,8 @@ export default function RootLayout({
   return (
     <html
       lang="en-IN"
+      // The inline script below adds data-js="on" before hydration, on purpose.
+      suppressHydrationWarning
       className={`${playfair.variable} ${inter.variable} ${plexMono.variable}`}
     >
       <head>

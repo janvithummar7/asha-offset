@@ -42,7 +42,7 @@ export default function ManufacturingPage() {
       />
       <Manufacturing showLabel={false} />
       <Facility />
-      <ContactCta />
+      <ContactCta tone="stock" />
     </>
   );
 }

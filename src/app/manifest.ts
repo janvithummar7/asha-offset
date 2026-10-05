@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
       "Printing and packaging company in Gondal, Gujarat, established 1998.",
     start_url: "/",
     display: "standalone",
-    background_color: "#f4efe5",
+    background_color: "#fbf9f4",
     theme_color: "#b71c28",
     icons: [
       { src: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },

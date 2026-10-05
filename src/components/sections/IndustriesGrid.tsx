@@ -61,18 +61,23 @@ function SectorMark({ name }: { name: string }) {
   );
 }
 
-export function IndustriesGrid({ showLabel = true }: { showLabel?: boolean }) {
+export function IndustriesGrid({
+  showLabel = true,
+  index = "07",
+}: {
+  showLabel?: boolean;
+  index?: string;
+}) {
   return (
-    <Section id="industries" tone="ink">
+    <Section id="industries" tone="paper">
       <SectionHead
         showLabel={showLabel}
-        index="07"
+        index={index}
         label="Industries"
-        tone="paper"
         title={
           <>
             Printing Across{" "}
-            <span className="italic text-brass">Industries</span>
+            <span className="italic text-burgundy">Industries</span>
           </>
         }
       />
@@ -80,8 +85,8 @@ export function IndustriesGrid({ showLabel = true }: { showLabel?: boolean }) {
       <div className="mt-14 grid gap-7 sm:grid-cols-2">
         {industries.map((industry, i) => (
           <Reveal key={industry.name} delay={i * 110}>
-            <article className="group relative h-full overflow-hidden border border-paper/20 p-8 transition-[transform,background-color,border-color] duration-500 hover:-translate-y-1 hover:border-paper/40 hover:bg-paper/5 sm:p-10">
-              <CropMarks inset="0.7rem" className="text-paper/60" />
+            <article className="group relative h-full overflow-hidden border border-ink/20 bg-cream p-8 transition-[transform,background-color,border-color] duration-500 hover:-translate-y-1 hover:border-ink/40 sm:p-10">
+              <CropMarks inset="0.7rem" className="text-ink/50" />
 
               {/* Brass wash rising on hover. */}
               <div
@@ -91,15 +96,15 @@ export function IndustriesGrid({ showLabel = true }: { showLabel?: boolean }) {
 
               <div className="relative">
                 <div className="flex items-start justify-between gap-6">
-                  <span className="text-brass transition-transform duration-500 group-hover:-translate-y-1">
+                  <span className="text-brass-deep transition-transform duration-500 group-hover:-translate-y-1">
                     <SectorMark name={industry.name} />
                   </span>
-                  <span className="eyebrow text-paper/60">
+                  <span className="eyebrow text-ink/65">
                     {industry.index}
                   </span>
                 </div>
 
-                <h3 className="mt-8 font-serif text-[clamp(1.5rem,2.6vw,2rem)] text-paper">
+                <h3 className="mt-8 font-serif text-[clamp(1.5rem,2.6vw,2rem)] text-coffee">
                   {industry.name}
                 </h3>
 
@@ -108,7 +113,7 @@ export function IndustriesGrid({ showLabel = true }: { showLabel?: boolean }) {
                   aria-hidden="true"
                 />
 
-                <p className="measure mt-5 leading-relaxed text-paper/60">
+                <p className="measure mt-5 leading-relaxed text-ink/70">
                   {industry.description}
                 </p>
               </div>

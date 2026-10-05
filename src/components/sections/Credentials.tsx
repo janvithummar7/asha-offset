@@ -73,7 +73,7 @@ export function Credentials({ showLabel = true }: { showLabel?: boolean }) {
 
           return (
             <Reveal key={cert.index} delay={i * 110}>
-              <article className="group relative flex h-full flex-col border border-ink/15 bg-paper p-7 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_26px_50px_-42px_rgb(25_24_23/0.6)] sm:p-8">
+              <article className="group relative flex h-full flex-col border border-ink/15 bg-paper p-7 transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_26px_50px_-42px_rgb(13_27_46/0.6)] sm:p-8">
                 <CropMarks inset="0.55rem" />
 
                 {/* Document mark ---------------------------------- */}

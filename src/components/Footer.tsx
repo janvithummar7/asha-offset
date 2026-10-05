@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { company, footerLinks, navLinks } from "@/lib/content";
-import { ColourBar, RegistrationMark } from "./print";
+import { RegistrationMark } from "./print";
+import { SectionDivider } from "./SectionDivider";
 
 export function Footer() {
   const year = 2026;
@@ -18,7 +19,7 @@ export function Footer() {
         }
         aria-hidden="true"
       />
-      <ColourBar className="h-[3px] w-full" />
+      <SectionDivider placement="flow" />
 
       <div className="relative mx-auto max-w-[88rem] px-5 py-16 sm:px-8 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">

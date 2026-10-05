@@ -7,12 +7,18 @@ import { ColourBar, RegistrationMark } from "../print";
  * Set as an inspection docket: a ruled sheet with a header block, a
  * numbered check at every stage and a signed-off footer.
  */
-export function QualitySheet({ showLabel = true }: { showLabel?: boolean }) {
+export function QualitySheet({
+  showLabel = true,
+  index = "08",
+}: {
+  showLabel?: boolean;
+  index?: string;
+}) {
   return (
     <Section id="quality" tone="stock">
       <SectionHead
         showLabel={showLabel}
-        index="08"
+        index={index}
         label="Quality"
         title={
           <>
@@ -24,7 +30,7 @@ export function QualitySheet({ showLabel = true }: { showLabel?: boolean }) {
       />
 
       <Reveal delay={140}>
-        <div className="relative mt-14 border border-ink/20 bg-paper shadow-[0_28px_60px_-50px_rgb(25_24_23/0.7)]">
+        <div className="relative mt-14 border border-ink/20 bg-paper shadow-[0_28px_60px_-50px_rgb(13_27_46/0.7)]">
           {/* Docket header ---------------------------------------- */}
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-ink/20 bg-cream px-6 py-5 sm:px-9">
             <div className="flex items-center gap-4">

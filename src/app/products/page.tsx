@@ -44,7 +44,7 @@ export default function ProductsPage() {
         lede="From everyday commercial communication to industrial identification and product packaging."
       />
       <ProductShowcase heading={false} />
-      <ContactCta />
+      <ContactCta tone="stock" />
     </>
   );
 }

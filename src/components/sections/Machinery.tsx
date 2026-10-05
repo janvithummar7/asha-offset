@@ -9,7 +9,7 @@ export function Machinery({ showLabel = true }: { showLabel?: boolean }) {
     <Section id="machinery" tone="stock">
       <SectionHead
         showLabel={showLabel}
-        index="05"
+        index="06"
         label="Machinery"
         title={
           <>
@@ -69,7 +69,7 @@ export function Machinery({ showLabel = true }: { showLabel?: boolean }) {
                 alt="Heidelberg four colour offset printing press"
                 fill
                 sizes="(max-width: 1024px) 92vw, 48vw"
-                className="object-contain drop-shadow-[0_24px_30px_rgb(25_24_23/0.25)] transition-transform duration-[1.2s] ease-[var(--ease-paper)] hover:scale-[1.04]"
+                className="object-contain drop-shadow-[0_24px_30px_rgb(13_27_46/0.25)] transition-transform duration-[1.2s] ease-[var(--ease-paper)] hover:scale-[1.04]"
               />
             </div>
             <div className="pointer-events-none absolute -bottom-2 right-0 sm:right-6">

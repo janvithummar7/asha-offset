@@ -32,21 +32,23 @@ export default function HomePage() {
 
       <Hero />
       <StatStrip />
-      <AboutBlock withCta />
-      <VisionMission />
+      <AboutBlock withCta index="01" />
+      <VisionMission index="02" />
 
       {/* Home shows the two flagship ranges; /products carries them all. */}
       <ProductShowcase
+        index="03"
+        tone="stock"
         limitTo={["labels-stickers", "packaging-printing"]}
         ctaHref="/products"
         ctaLabel="View the Full Portfolio"
       />
 
-      <Manufacturing />
-      <IndustriesGrid />
-      <QualitySheet />
-      <WhyUs />
-      <Testimonials />
+      <Manufacturing index="04" />
+      <IndustriesGrid index="05" />
+      <QualitySheet index="06" />
+      <WhyUs index="07" />
+      <Testimonials index="08" />
       <ContactCta />
     </>
   );

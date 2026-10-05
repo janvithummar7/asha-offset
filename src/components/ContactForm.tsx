@@ -131,7 +131,7 @@ export function ContactForm() {
         className="relative border border-ink/20 bg-cream p-8 sm:p-10"
       >
         <CropMarks inset="0.6rem" />
-        <p className="eyebrow text-brass-deep">Enquiry Composed</p>
+        <p className="eyebrow text-leaf">Enquiry Composed</p>
         <h3 className="mt-5 font-serif text-2xl text-coffee sm:text-3xl">
           Your mail client should now be open.
         </h3>

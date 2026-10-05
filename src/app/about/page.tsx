@@ -36,7 +36,7 @@ export default function AboutPage() {
       <StatStrip />
       <AboutBlock showLabel={false} />
       <VisionMission />
-      <WhyUs />
+      <WhyUs index="03" tone="stock" />
       <ContactCta />
     </>
   );

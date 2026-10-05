@@ -30,7 +30,13 @@ const FIGURES = [
   },
 ];
 
-export function Manufacturing({ showLabel = true }: { showLabel?: boolean }) {
+export function Manufacturing({
+  showLabel = true,
+  index = "04",
+}: {
+  showLabel?: boolean;
+  index?: string;
+}) {
   return (
     <Section id="manufacturing" tone="ink">
       <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-16">
@@ -68,7 +74,7 @@ export function Manufacturing({ showLabel = true }: { showLabel?: boolean }) {
         <div className="order-1 lg:order-2">
           <SectionHead
             showLabel={showLabel}
-            index="04"
+            index={index}
             label="Capabilities"
             tone="paper"
             title={

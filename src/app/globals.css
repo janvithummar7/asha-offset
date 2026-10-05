@@ -3,15 +3,15 @@
 /* ================================================================== */
 /*  ASHA OFFSET — design tokens                                        */
 /*  A traditional Indian printing house, redesigned as a premium       */
-/*  modern B2B brand. Warm paper stock, ink black, burgundy and brass. */
+/*  modern B2B brand. Clean paper stock, navy ink, Asha red, leaf green and gold, taken from the logo. */
 /* ================================================================== */
 
 @theme {
   /* Paper & ink ---------------------------------------------------- */
-  --color-paper: #f4efe5;
-  --color-cream: #e9e0d0;
-  --color-beige: #d6c8b4;
-  --color-ink: #191817;
+  --color-paper: #fbf9f4;
+  --color-cream: #eff2f7;
+  --color-beige: #d3dbe8;
+  --color-ink: #0d1b2e;
   /* Logo palette. "burgundy" is the token name used across the site; its
      value is now the Asha logo red, deepened slightly so small text on
      paper (5.7:1) and cream (5.0:1) clears WCAG AA. "coffee" is the deep
@@ -19,37 +19,37 @@
   --color-coffee: #15304f;
   --color-burgundy: #b71c28;
   /* Logo leaf green and "Offset" blue, for small accents. */
-  --color-leaf: #4f8a1f;
+  --color-leaf: #3b6d14;
   --color-leaf-light: #8dc63f;
   --color-blue: #1b5fa8;
   --color-blue-light: #7fb2ea;
-  /* Decorative brass. Only 2.92:1 on paper, so it is used for rules,
+  /* Decorative gold. Low contrast on paper, so it is used for rules,
      ornaments and large display type on dark — never for small text
      on a light ground. The two variants below cover that. */
-  --color-brass: #a98752;
+  --color-brass: #c4962f;
   /* 5.34:1 on paper, 4.68:1 on cream — small text on a light ground. */
-  --color-brass-deep: #765e39;
+  --color-brass-deep: #7a5a12;
   /* 8.01:1 on ink, 6.25:1 on coffee — small text on a dark ground. */
-  --color-brass-light: #c3ab86;
+  --color-brass-light: #e6bf5a;
 
   /* Tints used for rules, washes and hairlines --------------------- */
-  --color-ink-80: rgb(25 24 23 / 0.8);
-  --color-ink-60: rgb(25 24 23 / 0.6);
-  --color-ink-40: rgb(25 24 23 / 0.4);
-  --color-ink-20: rgb(25 24 23 / 0.2);
-  --color-ink-12: rgb(25 24 23 / 0.12);
-  --color-ink-08: rgb(25 24 23 / 0.08);
-  --color-paper-70: rgb(244 239 229 / 0.7);
-  --color-paper-50: rgb(244 239 229 / 0.5);
-  --color-paper-30: rgb(244 239 229 / 0.3);
-  --color-paper-15: rgb(244 239 229 / 0.15);
-  --color-paper-08: rgb(244 239 229 / 0.08);
+  --color-ink-80: rgb(13 27 46 / 0.8);
+  --color-ink-60: rgb(13 27 46 / 0.6);
+  --color-ink-40: rgb(13 27 46 / 0.4);
+  --color-ink-20: rgb(13 27 46 / 0.2);
+  --color-ink-12: rgb(13 27 46 / 0.12);
+  --color-ink-08: rgb(13 27 46 / 0.08);
+  --color-paper-70: rgb(251 249 244 / 0.7);
+  --color-paper-50: rgb(251 249 244 / 0.5);
+  --color-paper-30: rgb(251 249 244 / 0.3);
+  --color-paper-15: rgb(251 249 244 / 0.15);
+  --color-paper-08: rgb(251 249 244 / 0.08);
 
   /* Process inks, used only as tiny accents (registration bars etc.) */
   --color-plate-c: #1b5fa8;
   --color-plate-m: #d8283a;
-  --color-plate-y: #c99a3e;
-  --color-plate-k: #2a2724;
+  --color-plate-y: #f2b705;
+  --color-plate-k: #0d1b2e;
 
   /* Type ----------------------------------------------------------- */
   --font-serif: var(--font-playfair), "Playfair Display", "Times New Roman",
@@ -253,9 +253,9 @@
 .ink-wash {
   background-image: linear-gradient(
     to top,
-    rgb(25 24 23 / 0.88),
-    rgb(25 24 23 / 0.32) 55%,
-    rgb(25 24 23 / 0.1)
+    rgb(13 27 46 / 0.88),
+    rgb(13 27 46 / 0.32) 55%,
+    rgb(13 27 46 / 0.1)
   );
 }
 
@@ -449,8 +449,8 @@
   pointer-events: none;
   background: radial-gradient(
     ellipse 120% 90% at 50% 45%,
-    rgb(10 10 18 / 0) 40%,
-    rgb(10 10 18 / 0.5) 100%
+    rgb(6 14 26 / 0) 40%,
+    rgb(6 14 26 / 0.5) 100%
   );
 }
 
@@ -472,19 +472,19 @@
   opacity: var(--k);
   background: radial-gradient(
     ellipse 60% 80% at 18% 52%,
-    rgb(8 8 10 / 0.7) 0%,
-    rgb(8 8 10 / 0.45) 48%,
-    rgb(8 8 10 / 0) 78%
+    rgb(6 14 26 / 0.7) 0%,
+    rgb(6 14 26 / 0.45) 48%,
+    rgb(6 14 26 / 0) 78%
   );
 }
 .hero-settle-in {
   position: relative;
   max-width: min(640px, 48vw);
-  color: #fbf6ec;
+  color: #fbfaf7;
   text-shadow:
-    0 1px 2px rgb(5 5 10 / 0.95),
-    0 3px 12px rgb(5 5 10 / 0.78),
-    0 10px 44px rgb(5 5 10 / 0.8);
+    0 1px 2px rgb(6 14 26 / 0.95),
+    0 3px 12px rgb(6 14 26 / 0.78),
+    0 10px 44px rgb(6 14 26 / 0.8);
 }
 .hero-eyebrow {
   color: var(--color-brass-light);
@@ -507,7 +507,7 @@
   max-width: 36ch;
   font-size: 1.1875rem;
   line-height: 1.5;
-  color: #e9e0cf;
+  color: #e3ebf5;
   opacity: var(--ks);
   transform: translateY(calc((1 - var(--ks)) * 12px));
 }
@@ -537,7 +537,7 @@
   height: 56px;
   margin-left: -1px;
   overflow: hidden;
-  background: rgb(244 239 229 / 0.25);
+  background: rgb(251 249 244 / 0.25);
 }
 .hero-cue::after {
   content: "";
@@ -579,9 +579,9 @@
   right: 24px;
   top: 96px;
   padding: 0.75rem;
-  color: #fbf6ec;
+  color: #fbfaf7;
   text-decoration: none;
-  text-shadow: 0 1px 6px rgb(5 5 10 / 0.9);
+  text-shadow: 0 1px 6px rgb(6 14 26 / 0.9);
 }
 .hero-skip:hover {
   text-decoration: underline;
@@ -617,23 +617,23 @@
   opacity: calc(0.3 + 0.7 * var(--k, 1));
   background: radial-gradient(
     ellipse 52% 46% at 50% 50%,
-    rgb(6 6 8 / 0.68) 0%,
-    rgb(6 6 8 / 0.42) 46%,
-    rgb(6 6 8 / 0) 76%
+    rgb(6 14 26 / 0.68) 0%,
+    rgb(6 14 26 / 0.42) 46%,
+    rgb(6 14 26 / 0) 76%
   );
 }
 .hero-band-in {
   position: relative;
-  color: #fbf6ec;
+  color: #fbfaf7;
   text-shadow:
-    0 1px 2px rgb(5 5 10 / 0.95),
-    0 3px 12px rgb(5 5 10 / 0.78),
-    0 10px 44px rgb(5 5 10 / 0.8);
+    0 1px 2px rgb(6 14 26 / 0.95),
+    0 3px 12px rgb(6 14 26 / 0.78),
+    0 10px 44px rgb(6 14 26 / 0.8);
 }
 .hero-band .step {
   display: block;
   margin-bottom: 0.75rem;
-  color: #e3d7c2;
+  color: #d6e0ee;
   opacity: var(--k);
   transform: translateY(calc((1 - var(--k)) * 10px));
 }
@@ -655,7 +655,7 @@
   max-width: 36ch;
   font-size: 1.1875rem;
   line-height: 1.5;
-  color: #efe6d6;
+  color: #e8eef6;
   opacity: var(--ks);
   transform: translateY(calc((1 - var(--ks)) * 10px));
 }
@@ -678,7 +678,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
-  color: rgb(244 239 229 / 0.6);
+  color: rgb(251 249 244 / 0.6);
   transition: color 0.4s var(--ease-paper);
 }
 .hero-rail li i {
@@ -694,7 +694,7 @@
   transition: opacity 0.4s, transform 0.4s var(--ease-paper);
 }
 .hero-rail li.on {
-  color: #fbf6ec;
+  color: #fbfaf7;
 }
 .hero-rail li.on i {
   background: var(--color-brass-light);
@@ -745,9 +745,9 @@
   .hero-settle::before {
     background: linear-gradient(
       to top,
-      rgb(8 8 10 / 0.85) 0%,
-      rgb(8 8 10 / 0.5) 55%,
-      rgb(8 8 10 / 0) 100%
+      rgb(6 14 26 / 0.85) 0%,
+      rgb(6 14 26 / 0.5) 55%,
+      rgb(6 14 26 / 0) 100%
     );
   }
   .hero-settle-in {
@@ -758,14 +758,14 @@
     margin: 0 0 1.5rem;
     padding: 0;
     list-style: none;
-    color: #e3d7c2;
+    color: #d6e0ee;
   }
   .hero-static-steps li {
     padding: 0.25rem 0;
   }
   .hero-static-steps b {
     font-weight: 500;
-    color: #fbf6ec;
+    color: #fbfaf7;
   }
 }
 
@@ -796,9 +796,9 @@
     inset: 30% -20px -10%;
     background: linear-gradient(
       to top,
-      rgb(6 6 8 / 0.82) 0%,
-      rgb(6 6 8 / 0.55) 60%,
-      rgb(6 6 8 / 0) 100%
+      rgb(6 14 26 / 0.82) 0%,
+      rgb(6 14 26 / 0.55) 60%,
+      rgb(6 14 26 / 0) 100%
     );
   }
   .hero-band-title {
@@ -833,9 +833,9 @@
   .hero-settle::before {
     background: linear-gradient(
       to top,
-      rgb(8 8 10 / 0.85) 0%,
-      rgb(8 8 10 / 0.55) 55%,
-      rgb(8 8 10 / 0) 100%
+      rgb(6 14 26 / 0.85) 0%,
+      rgb(6 14 26 / 0.55) 55%,
+      rgb(6 14 26 / 0) 100%
     );
   }
   .hero-settle-in {

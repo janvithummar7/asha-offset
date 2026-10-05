@@ -11,10 +11,16 @@ import { Action } from "../ui";
  */
 export function ProductShowcase({
   heading = true,
+  index = "03",
+  tone = "paper",
   limitTo,
   ctaHref = "/contact",
   ctaLabel = "Discuss Your Printing Requirement",
 }: {
+  /** Running-head number; pages override it so the sequence has no gaps. */
+  index?: string;
+  /** Background; pages alternate it so neighbouring bands differ. */
+  tone?: "paper" | "stock";
   /** Render the section opener. */
   heading?: boolean;
   /** Show only these group slugs — used for the home-page teaser. */
@@ -27,10 +33,10 @@ export function ProductShowcase({
     : productGroups;
 
   return (
-    <Section id="products" tone="paper">
+    <Section id="products" tone={tone}>
       {heading && (
         <SectionHead
-          index="03"
+          index={index}
           label="Portfolio"
           title={
             <>
@@ -61,7 +67,7 @@ export function ProductShowcase({
             <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {group.items.map((item, i) => (
                 <Reveal key={item.name} delay={i * 100}>
-                  <article className="group relative h-full border border-ink/15 bg-cream transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:border-ink/30 hover:shadow-[0_28px_55px_-40px_rgb(25_24_23/0.6)]">
+                  <article className="group relative h-full border border-ink/15 bg-cream transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:border-ink/30 hover:shadow-[0_28px_55px_-40px_rgb(13_27_46/0.6)]">
                     {/* Plate ------------------------------------------ */}
                     <div className="relative aspect-5/4 overflow-hidden border-b border-ink/12">
                       <div className="h-full w-full transition-transform duration-[1.2s] ease-[var(--ease-paper)] group-hover:scale-[1.06]">

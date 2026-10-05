@@ -1,6 +1,7 @@
 import { stats } from "@/lib/content";
 import { Counter } from "./Counter";
 import { Reveal } from "./Reveal";
+import { SectionDivider } from "./SectionDivider";
 
 /**
  * Heritage figures, set like the statistics panel of a printed annual
@@ -23,6 +24,8 @@ export function StatStrip() {
         }
         aria-hidden="true"
       />
+
+      <SectionDivider />
 
       <dl className="relative mx-auto grid max-w-[88rem] grid-cols-2 gap-px bg-paper/12 lg:grid-cols-4">
         {stats.map((stat, i) => (

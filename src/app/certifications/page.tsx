@@ -34,7 +34,7 @@ export default function CertificationsPage() {
       />
       <Credentials showLabel={false} />
       <VendorRegistration />
-      <ContactCta />
+      <ContactCta tone="stock" />
     </>
   );
 }

@@ -80,21 +80,22 @@ export function Nav() {
         <Link
           href="/"
           className={`group flex flex-col justify-center transition-all duration-500 ${
-            scrolled ? "py-3" : "py-5"
+            scrolled ? "py-4" : "py-5"
           }`}
         >
-          <span
-            className={`font-serif leading-none tracking-tight transition-all duration-500 ${
-              scrolled
-                ? "text-xl sm:text-[1.35rem]"
-                : "text-2xl sm:text-[1.7rem]"
-            } ${onDark ? "text-paper" : "text-ink"}`}
-          >
-            ASHA{" "}
-            <span className={onDark ? "text-brass" : "text-burgundy"}>
-              OFFSET
-            </span>
-          </span>
+          {/* Transparent logo. Over a dark ground a soft light halo keeps
+              the blue "Offset" lettering legible without a backing plate. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="Asha Offset"
+            width={704}
+            height={162}
+            className={`w-auto transition-all duration-500 ${
+              scrolled ? "h-8 sm:h-12" : "h-9 sm:h-14"
+            } ${onDark ? "logo-halo" : ""}`}
+          />
+
           <span
             className={`eyebrow overflow-hidden transition-all duration-500 ${
               scrolled ? "mt-0 max-h-0 opacity-0" : "mt-1.5 max-h-5 opacity-100"

@@ -24,9 +24,15 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
           {/* Masthead ---------------------------------------------- */}
           <div>
-            <p className="font-serif text-3xl leading-none sm:text-4xl">
-              ASHA <span className="text-brass">OFFSET</span>
-            </p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.png"
+              alt="Asha Offset"
+              width={704}
+              height={162}
+              loading="lazy"
+              className="logo-halo h-11 w-auto sm:h-16"
+            />
             <p className="mt-4 font-serif text-xl italic text-paper/75">
               {company.tagline}
             </p>

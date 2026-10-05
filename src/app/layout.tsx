@@ -87,7 +87,7 @@ const siteSchema = {
       name: company.name,
       legalName: company.name,
       url: SITE_URL,
-      logo: `${SITE_URL}/images/logo-original.png`,
+      logo: `${SITE_URL}/logo.png`,
       image: `${SITE_URL}/images/press-floor.jpg`,
       description:
         "Printing and packaging company in Gondal, Gujarat. Manufacturer of industrial labels, stickers, duplex boxes and mono cartons, and a provider of commercial offset printing since 1998.",

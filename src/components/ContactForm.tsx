@@ -240,7 +240,7 @@ export function ContactForm() {
           className={`${FIELD_CLASS} mt-2.5 appearance-none bg-[length:0.7rem] bg-[right_1rem_center] bg-no-repeat pr-10`}
           style={{
             backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236B302D'/%3E%3C/svg%3E\")",
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23B71C28'/%3E%3C/svg%3E\")",
           }}
         >
           <option value="">Select a category</option>

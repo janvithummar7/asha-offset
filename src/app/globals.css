@@ -12,8 +12,17 @@
   --color-cream: #e9e0d0;
   --color-beige: #d6c8b4;
   --color-ink: #191817;
-  --color-coffee: #3a2921;
-  --color-burgundy: #6b302d;
+  /* Logo palette. "burgundy" is the token name used across the site; its
+     value is now the Asha logo red, deepened slightly so small text on
+     paper (5.7:1) and cream (5.0:1) clears WCAG AA. "coffee" is the deep
+     navy of the logo's "Offset" lettering, used for headings and hover. */
+  --color-coffee: #15304f;
+  --color-burgundy: #b71c28;
+  /* Logo leaf green and "Offset" blue, for small accents. */
+  --color-leaf: #4f8a1f;
+  --color-leaf-light: #8dc63f;
+  --color-blue: #1b5fa8;
+  --color-blue-light: #7fb2ea;
   /* Decorative brass. Only 2.92:1 on paper, so it is used for rules,
      ornaments and large display type on dark — never for small text
      on a light ground. The two variants below cover that. */
@@ -37,8 +46,8 @@
   --color-paper-08: rgb(244 239 229 / 0.08);
 
   /* Process inks, used only as tiny accents (registration bars etc.) */
-  --color-plate-c: #2f7f94;
-  --color-plate-m: #9c3f63;
+  --color-plate-c: #1b5fa8;
+  --color-plate-m: #d8283a;
   --color-plate-y: #c99a3e;
   --color-plate-k: #2a2724;
 
@@ -832,4 +841,11 @@
   .hero-settle-in {
     max-width: 100%;
   }
+}
+
+/* Logo on a dark ground: the artwork is transparent, so give its dark-blue
+   lettering a thin light halo instead of a backing plate. */
+.logo-halo {
+  filter: drop-shadow(0 0 1px rgb(255 255 255 / 0.95))
+    drop-shadow(0 0 5px rgb(255 255 255 / 0.35));
 }

@@ -392,3 +392,444 @@
     clip-path: none !important;
   }
 }
+
+/* ================================================================== */
+/*  Hero film — scroll-scrubbed "Sheet to Shelf"                       */
+/*  Scrub mode pins an 800vh runway. The static-mode media list below  */
+/*  is repeated in Hero.tsx (STATIC_GATES) — keep the two in step.     */
+/* ================================================================== */
+
+.hero-film {
+  position: relative;
+  height: 800vh;
+  background: var(--color-ink);
+}
+
+.hero-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.hero-poster,
+.hero-stage video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-stage video {
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-paper);
+  will-change: transform;
+  transform: translateZ(0);
+}
+.hero-stage.video-ready video {
+  opacity: 1;
+}
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 120% 90% at 50% 45%,
+    rgb(10 10 18 / 0) 40%,
+    rgb(10 10 18 / 0.5) 100%
+  );
+}
+
+/* Closing frame ---------------------------------------------------- */
+.hero-settle {
+  --k: 0;
+  --ks: clamp(0, (var(--k) - 0.55) * 3, 1);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 max(24px, 6vw);
+  pointer-events: none;
+}
+.hero-settle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: var(--k);
+  background: radial-gradient(
+    ellipse 60% 80% at 18% 52%,
+    rgb(8 8 10 / 0.7) 0%,
+    rgb(8 8 10 / 0.45) 48%,
+    rgb(8 8 10 / 0) 78%
+  );
+}
+.hero-settle-in {
+  position: relative;
+  max-width: min(640px, 48vw);
+  color: #fbf6ec;
+  text-shadow:
+    0 1px 2px rgb(5 5 10 / 0.95),
+    0 3px 12px rgb(5 5 10 / 0.78),
+    0 10px 44px rgb(5 5 10 / 0.8);
+}
+.hero-eyebrow {
+  color: var(--color-brass-light);
+  opacity: var(--ks);
+  transform: translateY(calc((1 - var(--ks)) * 10px));
+}
+.hero-settle h1 {
+  margin: 0.25em 0 0.2em;
+  font-size: clamp(3rem, 7.4vw, 6.5rem);
+  line-height: 0.98;
+  color: inherit;
+}
+.hero-settle h1 .w {
+  --kc: clamp(0, (var(--k) - var(--th, 0)) * 2.8, 1);
+  display: inline-block;
+  opacity: var(--kc);
+  transform: translateY(calc((1 - var(--kc)) * 38px));
+}
+.hero-sub {
+  max-width: 36ch;
+  font-size: 1.1875rem;
+  line-height: 1.5;
+  color: #e9e0cf;
+  opacity: var(--ks);
+  transform: translateY(calc((1 - var(--ks)) * 12px));
+}
+.hero-row {
+  --kb: clamp(0, (var(--k) - 0.78) * 5, 1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  opacity: var(--kb);
+  transform: translateY(calc((1 - var(--kb)) * 14px));
+  text-shadow: none;
+}
+.hero-settle.live .hero-row {
+  pointer-events: auto;
+}
+.hero-static-steps {
+  display: none;
+}
+
+/* Scroll cue, progress ring, skip link ----------------------------- */
+.hero-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  width: 2px;
+  height: 56px;
+  margin-left: -1px;
+  overflow: hidden;
+  background: rgb(244 239 229 / 0.25);
+}
+.hero-cue::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: -8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-brass-light);
+  animation: hero-cue 1.8s var(--ease-paper) infinite;
+}
+@keyframes hero-cue {
+  0% { transform: translateY(0); opacity: 0; }
+  20%, 80% { opacity: 1; }
+  100% { transform: translateY(64px); opacity: 0; }
+}
+
+.hero-ring {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  width: 40px;
+  height: 40px;
+  color: var(--color-paper-70);
+  transition: opacity 0.5s;
+}
+.hero-ring circle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+.hero-stage.video-ready .hero-ring,
+.hero-stage.video-failed .hero-ring {
+  opacity: 0;
+}
+
+.hero-skip {
+  position: absolute;
+  right: 24px;
+  top: 96px;
+  padding: 0.75rem;
+  color: #fbf6ec;
+  text-decoration: none;
+  text-shadow: 0 1px 6px rgb(5 5 10 / 0.9);
+}
+.hero-skip:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Captions riding over the film ------------------------------------ */
+.hero-band {
+  --k: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  width: min(500px, 40vw);
+  pointer-events: none;
+  opacity: 0;
+}
+.hero-band.left {
+  left: max(24px, 6vw);
+}
+.hero-band.right {
+  right: max(96px, 7.5vw);
+  width: min(430px, 31vw);
+  align-items: flex-end;
+  padding-bottom: 13vh;
+}
+.hero-band::before {
+  content: "";
+  position: absolute;
+  inset: -10% -40%;
+  pointer-events: none;
+  opacity: calc(0.3 + 0.7 * var(--k, 1));
+  background: radial-gradient(
+    ellipse 52% 46% at 50% 50%,
+    rgb(6 6 8 / 0.68) 0%,
+    rgb(6 6 8 / 0.42) 46%,
+    rgb(6 6 8 / 0) 76%
+  );
+}
+.hero-band-in {
+  position: relative;
+  color: #fbf6ec;
+  text-shadow:
+    0 1px 2px rgb(5 5 10 / 0.95),
+    0 3px 12px rgb(5 5 10 / 0.78),
+    0 10px 44px rgb(5 5 10 / 0.8);
+}
+.hero-band .step {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: #e3d7c2;
+  opacity: var(--k);
+  transform: translateY(calc((1 - var(--k)) * 10px));
+}
+.hero-band-title {
+  margin-bottom: 0.875rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 4.2vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
+.hero-band-title .w {
+  --kc: clamp(0, (var(--k) - var(--th, 0)) * 2.6, 1);
+  display: inline-block;
+  opacity: var(--kc);
+  transform: translateY(calc((1 - var(--kc)) * 26px));
+}
+.hero-band-body {
+  --ks: clamp(0, (var(--k) - 0.5) * 2.4, 1);
+  max-width: 36ch;
+  font-size: 1.1875rem;
+  line-height: 1.5;
+  color: #efe6d6;
+  opacity: var(--ks);
+  transform: translateY(calc((1 - var(--ks)) * 10px));
+}
+
+.hero-rail {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: right;
+}
+.hero-rail li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  color: rgb(244 239 229 / 0.6);
+  transition: color 0.4s var(--ease-paper);
+}
+.hero-rail li i {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  transition: background 0.4s var(--ease-paper), transform 0.4s var(--ease-paper);
+}
+.hero-rail li span {
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity 0.4s, transform 0.4s var(--ease-paper);
+}
+.hero-rail li.on {
+  color: #fbf6ec;
+}
+.hero-rail li.on i {
+  background: var(--color-brass-light);
+  border-color: var(--color-brass-light);
+  transform: scale(1.3);
+}
+.hero-rail li.on span {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-height: 560px) {
+  .hero-cue,
+  .hero-skip,
+  .hero-rail {
+    display: none;
+  }
+}
+
+/* Static hero: phones, portrait tablets, touch landscape, reduced
+   motion. The film is never fetched; the closing frame shows at once. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-film {
+    height: auto;
+  }
+  .hero-stage {
+    position: relative;
+    min-height: 560px;
+  }
+  .hero-stage video,
+  .hero-ring,
+  .hero-cue,
+  .hero-skip,
+  .hero-band,
+  .hero-rail {
+    display: none;
+  }
+  .hero-poster {
+    object-position: 72% 50%;
+  }
+  .hero-settle {
+    --k: 1;
+    align-items: flex-end;
+    padding-bottom: 3.5rem;
+    padding-top: 7rem;
+    pointer-events: auto;
+  }
+  .hero-settle::before {
+    background: linear-gradient(
+      to top,
+      rgb(8 8 10 / 0.85) 0%,
+      rgb(8 8 10 / 0.5) 55%,
+      rgb(8 8 10 / 0) 100%
+    );
+  }
+  .hero-settle-in {
+    max-width: 40rem;
+  }
+  .hero-static-steps {
+    display: block;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    list-style: none;
+    color: #e3d7c2;
+  }
+  .hero-static-steps li {
+    padding: 0.25rem 0;
+  }
+  .hero-static-steps b {
+    font-weight: 500;
+    color: #fbf6ec;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (max-width: 720px) {
+  .hero-poster {
+    object-position: 60% 50%;
+  }
+}
+
+/* Portrait and phone layout for the scrubbed film. The film is 16:9 with
+   its subject in the centre column, so it crops cleanly; captions move
+   to a full-width block low on the screen, clear of the subject and of
+   the fixed call bar at the bottom. */
+@media (max-width: 900px) {
+  .hero-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-band.left,
+  .hero-band.right {
+    left: 20px;
+    right: 20px;
+    width: auto;
+    align-items: flex-end;
+    padding-bottom: 7.5rem;
+  }
+  .hero-band::before {
+    inset: 30% -20px -10%;
+    background: linear-gradient(
+      to top,
+      rgb(6 6 8 / 0.82) 0%,
+      rgb(6 6 8 / 0.55) 60%,
+      rgb(6 6 8 / 0) 100%
+    );
+  }
+  .hero-band-title {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+  .hero-band-body {
+    font-size: 1.0625rem;
+  }
+  .hero-rail {
+    right: 12px;
+    gap: 14px;
+  }
+  .hero-ring {
+    right: 16px;
+    bottom: 4.5rem;
+  }
+  .hero-cue {
+    bottom: 4.25rem;
+    height: 40px;
+  }
+  .hero-rail li span {
+    display: none;
+  }
+  .hero-skip {
+    top: 84px;
+    right: 8px;
+  }
+  .hero-settle {
+    align-items: flex-end;
+    padding: 0 20px 6.5rem;
+  }
+  .hero-settle::before {
+    background: linear-gradient(
+      to top,
+      rgb(8 8 10 / 0.85) 0%,
+      rgb(8 8 10 / 0.55) 55%,
+      rgb(8 8 10 / 0) 100%
+    );
+  }
+  .hero-settle-in {
+    max-width: 100%;
+  }
+}

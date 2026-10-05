@@ -9,6 +9,7 @@ import { Reveal } from "./Reveal";
 export function StatStrip() {
   return (
     <section
+      id="figures"
       aria-label="Company figures"
       className="on-ink relative overflow-hidden border-y border-ink/15 bg-ink text-paper"
     >

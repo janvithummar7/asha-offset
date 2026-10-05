@@ -61,7 +61,8 @@ export function Nav() {
    * band, so while the masthead is still transparent it has to be set
    * in light ink to stay legible. Once scrolled it sits on paper again.
    */
-  const onDark = pathname !== "/" && !scrolled;
+  // The home page now opens on the dark hero film, so it counts too.
+  const onDark = !scrolled;
 
   return (
     <header
